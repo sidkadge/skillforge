@@ -12,6 +12,10 @@ class Home extends BaseController
     {
         return view('contact_us');
     }
+    public function aboutus()
+    {
+        echo view('aboutus');
+    }
   
   
 }
