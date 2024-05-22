@@ -44,11 +44,7 @@
                                 <input id="pass" type="password" class="input" data-type="password"
                                     placeholder="Create your password">
                             </div>
-                            <!-- <div class="group">
-                                <label for="pass" class="label">Repeat Password</label>
-                                <input id="pass" type="password" class="input" data-type="password"
-                                    placeholder="Repeat your password">
-                            </div> -->
+                           
                             <div class="group">
                                 <label for="pass" class="label">Email Address</label>
                                 <input id="pass" type="text" class="input" placeholder="Enter your email address">
