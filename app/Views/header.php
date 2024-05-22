@@ -44,11 +44,11 @@
                   <ul class="rd-navbar-nav">
                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
                     </li>
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="<?php echo base_url('aboutus') ?>">About</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="<?php echo base_url('about') ?>">About</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="">Typography</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('typrography') ?>">Typography</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="">Contacts</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('contact_us') ?>">Contacts</a>
                     </li>
                   </ul>
                 </div>
