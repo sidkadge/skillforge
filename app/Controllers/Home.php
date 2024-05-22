@@ -4,18 +4,20 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index()
+    public function index(): string
     {
         return view('home');
     }
-    public function Contact()
+    public function about()
     {
-        return view('contact_us');
+         echo view('aboutus');
     }
-    public function aboutus()
+    public function typrography()
     {
-        echo view('aboutus');
+         echo view('typrography');
     }
-  
-  
+    public function contact_us()
+    {
+         echo view('contact_us');
+    }
 }
