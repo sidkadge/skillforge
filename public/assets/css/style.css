@@ -55,6 +55,7 @@ ol {
 }
 
 
+
 .flip-container {
     perspective: 1000px;
    
@@ -4662,7 +4663,9 @@ a.thumbnail-thin {
 .breadcrumbs-custom {
 	position: relative;
 	overflow: hidden;
+
 	background: url("../images/breadcrumbs-bg.jpg") center;
+
 	background-size: cover;
 }
 
@@ -6297,7 +6300,9 @@ h3 + img {
 }
 
 * + .row {
+
 	margin-top: 30px;
+
 }
 
 * + .big {
@@ -6400,7 +6405,9 @@ html * + .offset-top-type-4 {
 
 @media (min-width: 768px) {
 	* + .row {
+
 		margin-top: 40px;
+
 	}
 	html .h-custom-1 + * {
 		margin-top: 35px;
@@ -6503,7 +6510,9 @@ html * + .offset-top-type-4 {
 		margin-top: 32px;
 	}
 	* + .row {
+
 		margin-top: 45px;
+
 	}
 	html .h-custom-1 + * {
 		margin-top: 50px;
@@ -9376,6 +9385,9 @@ html.tablet .ui-to-top {
 .rd-navbar-classic.rd-navbar-static .rd-navbar-main-outer {
 	padding-left: 15px;
 	padding-right: 15px;
+
+	height: 67px;
+
 }
 
 .rd-navbar-classic.rd-navbar-static .rd-navbar-main {
@@ -9423,7 +9435,9 @@ html.tablet .ui-to-top {
 		min-width: 300px;
 	}
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main {
+
 		padding: 35px 0 35px;
+
 	}
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main > * + * {
 		margin-left: 45px;

@@ -9,4 +9,6 @@ $routes->get('/', 'Home::index');
 $routes->get('about', 'Home::about');
 $routes->get('typrography', 'Home::typrography');
 $routes->get('contact_us', 'Home::contact_us');
+$routes->get('register', 'Home::register');
+$routes->get('login', 'Home::login');
 

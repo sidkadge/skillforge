@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="public/assets/css/bootstrap.css">
     <link rel="stylesheet" href="public/assets/css/fonts.css">
     <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="public/assets/css/register.css">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
-  <body><a class="banner banner-top" href="https://www.templatemonster.com/website-templates/monstroid2.html" target="_blank"><img src="images/monstroid-2.jpg" alt="" height="0"></a>
+  <body>
+    <!-- <a class="banner banner-top" href="https://www.templatemonster.com/website-templates/monstroid2.html" target="_blank"><img src="images/monstroid-2.jpg" alt="" height="0"></a> -->
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
       <div class="preloader-logo"><a class="brand" href="index.html"><img class="brand-logo-dark" src="public/assets/images/SkillForge.jpg" alt="" width="245" height="50"/><img class="brand-logo-light" src="images/logo-inverse-245x50.png" alt="" width="245" height="50"/></a>
@@ -44,12 +46,16 @@
                   <ul class="rd-navbar-nav">
                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
                     </li>
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="<?php echo base_url('about') ?>">About</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('about') ?>">About</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('typrography') ?>">Typography</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('contact_us') ?>">Contacts</a>
                     </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('register') ?>">register</a>
+                    </li>
+                    <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('login') ?>">login</a>
+                    </li> -->
                   </ul>
                 </div>
               </div>
@@ -57,3 +63,4 @@
           </nav>
         </div>
       </header>
+      

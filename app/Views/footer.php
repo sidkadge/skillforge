@@ -1,4 +1,3 @@
-    <!-- Page Footer--><a class="banner" href="https://www.templatemonster.com/website-templates/monstroid2.html" target="_blank"><img src="public/assets/images/monstroid-big-2.jpg" alt="" height="0"></a>
     <footer class="section footer-classic bg-gray-950">
         <div class="footer-classic-main">
           <div class="container"> 

@@ -20,4 +20,12 @@ class Home extends BaseController
     {
          echo view('contact_us');
     }
+    public function register()
+    {
+         echo view('register');
+    }
+    public function login()
+    {
+         echo view('login');
+    }
 }
