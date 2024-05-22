@@ -54,6 +54,44 @@ ol {
 	margin: 0;
 }
 
+
+
+.flip-container {
+    perspective: 1000px;
+   
+}
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.2s; /* Slower flip animation */
+    transform-style: preserve-3d;
+}
+.flip-container:hover .flipper {
+    transform: rotateY(180deg); /* Flip 180 degrees */
+}
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+.back {
+    transform: rotateY(180deg);
+}
+.img-rounded, .post-minimal-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
 ul li,
 ol li {
 	display: block;
@@ -4625,7 +4663,9 @@ a.thumbnail-thin {
 .breadcrumbs-custom {
 	position: relative;
 	overflow: hidden;
-	background: url("../images/extrac.jpeg") center;
+
+	background: url("../images/breadcrumbs-bg.jpg") center;
+
 	background-size: cover;
 }
 
@@ -6260,7 +6300,9 @@ h3 + img {
 }
 
 * + .row {
-	margin-top: 0px;
+
+	margin-top: 30px;
+
 }
 
 * + .big {
@@ -6363,7 +6405,9 @@ html * + .offset-top-type-4 {
 
 @media (min-width: 768px) {
 	* + .row {
-		margin-top: 0px;
+
+		margin-top: 40px;
+
 	}
 	html .h-custom-1 + * {
 		margin-top: 35px;
@@ -6466,7 +6510,9 @@ html * + .offset-top-type-4 {
 		margin-top: 32px;
 	}
 	* + .row {
-		margin-top: 20px;
+
+		margin-top: 45px;
+
 	}
 	html .h-custom-1 + * {
 		margin-top: 50px;
@@ -9339,7 +9385,9 @@ html.tablet .ui-to-top {
 .rd-navbar-classic.rd-navbar-static .rd-navbar-main-outer {
 	padding-left: 15px;
 	padding-right: 15px;
+
 	height: 67px;
+
 }
 
 .rd-navbar-classic.rd-navbar-static .rd-navbar-main {
@@ -9387,7 +9435,9 @@ html.tablet .ui-to-top {
 		min-width: 300px;
 	}
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main {
-		padding: 5px 0 35px;
+
+		padding: 35px 0 35px;
+
 	}
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main > * + * {
 		margin-left: 45px;
