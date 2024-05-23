@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+<link rel="stylesheet" href="public/assets/css/about.css">
 
 <div class="breadcrumbs-custom">
     <div class="container breadcrumbs-custom-container">

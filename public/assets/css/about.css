@@ -1,3 +1,18 @@
 .rounded-video {
     border-radius: 200px;
   }
+  .context-dark {
+    color:#ff7979  !important;
+  }
+  .breadcrumbs-custom-title{
+    color:#ff7979 !important;
+  }
+  .breadcrumbs-custom-item h6{
+    color:#ff7979!important;
+  }
+  .breadcrumbs-custom-path li a{
+    color: #000 ;
+  }
+  .breadcrumbs-custom-path li{
+    color: #000 ;
+  }
