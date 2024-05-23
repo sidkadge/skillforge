@@ -1,5 +1,5 @@
-<!-- <link rel="stylesheet" href="public/assets/css/register.css"> -->
 <?php include('header.php') ?>
+<link rel="stylesheet" href="public/assets/css/register.css">
 <div class="row">
     <div class="col-md-3">
     </div>
