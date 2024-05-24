@@ -7416,7 +7416,7 @@ html [class*='section-'].section-bottom-0 {
 * Light Backgrounds
 */
 .bg-default {
-	background-color: #ffffff;
+	background-color: #FCEFDF;
 }
 
 .bg-default:not([style*="background-"]) + .bg-default:not([style*="background-"]) {
