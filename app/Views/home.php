@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="public/assets/images/landimag2.jpeg">
+            <div class="swiper-slide" data-slide-bg="public/assets/images/paint2.jpg">
                 <div class="swiper-slide-caption context-dark">
                     <div class="container">
                         <div class="row">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="public/assets/images/landimag3.webp">
+            <div class="swiper-slide" data-slide-bg="public/assets/images/paint3.jpg">
                 <div class="swiper-slide-caption context-dark">
                     <div class="container">
                         <div class="row">
@@ -233,7 +233,7 @@
 
 
 <!-- Latest Blog Posts-->
-<section class="section section-lg bg-default text-center">
+<section class="section section-lg bg-gray-100 text-center">
     <div class="container">
         <h2 class="wow fadeIn">Latest Blog Posts</h2>
         <div class="row row-30 justify-content-center">
