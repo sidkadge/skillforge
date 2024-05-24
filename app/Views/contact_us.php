@@ -29,36 +29,36 @@
             <div class="col-lg-8">
              <h2>Get in Touch</h2>
              <!-- RD Mailform-->
-             <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+             <form action="<?php echo base_url()?>contactus" id="connectus" method="post">
                 <div class="row row-30">
                  <div class="col-md-6">
                     <div class="form-wrap">
-                     <input class="form-input" id="contact-first-name" type="text" name="first-name" data-constraints="@Required">
+                     <input class="form-input" id="contact-first-name" type="text" name="first_name" data-constraints="@Required" Required>
                      <label class="form-label" for="contact-first-name">First Name</label>
                     </div>
                  </div>
                  <div class="col-md-6">
                     <div class="form-wrap">
-                     <input class="form-input" id="contact-last-name" type="text" name="last-name" data-constraints="@Required">
+                     <input class="form-input" id="contact-last-name" type="text" name="last_name" data-constraints="@Required" Required>
                      <label class="form-label" for="contact-last-name">Last Name</label>
                     </div>
                  </div>
                  <div class="col-md-6">
                     <div class="form-wrap">
                      <label class="form-label" for="contact-email">E-mail</label>
-                     <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
+                     <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email" Required>
                     </div>
                  </div>
                  <div class="col-md-6">
                     <div class="form-wrap">
                      <label class="form-label" for="contact-phone">Phone</label>
-                     <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Required @PhoneNumber">
+                     <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Required @PhoneNumber" Required>
                     </div>
                  </div>
                  <div class="col-12">
                     <div class="form-wrap">
                      <label class="form-label" for="contact-message">Message</label>
-                     <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                     <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required" Required></textarea>
                     </div>
                  </div>
                  <div class="col-12">
@@ -70,6 +70,7 @@
          </div>
         </div>
      </section>
+
      <!-- Google Map-->
      <section class="section">
     <div class="google-map-container">
