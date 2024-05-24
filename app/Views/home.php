@@ -19,7 +19,8 @@
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
                                         <a class="button button-primary-gradient" href="#"><span>sign up for
-                                                excursion</span></a></div>
+                                                excursion</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +40,8 @@
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
                                         <a class="button button-primary-gradient" href="#"><span>sign up for
-                                                excursion</span></a></div>
+                                                excursion</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +61,8 @@
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
                                         <a class="button button-primary-gradient" href="#"><span>sign up for
-                                                excursion</span></a></div>
+                                                excursion</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -70,41 +73,45 @@
         <div class="swiper-pagination"></div>
     </div>
 </section>
-<!-- A Few Words About Me-->
+
+
 <section class="section section-lg bg-gray-100">
-    <div class="container">
-        <div class="row row-50 justify-content-center justify-content-lg-between">
-            <div class="col-12">
-                <h3 class="h-custom-1 f1">A Few Words About Extra Curricular Activities</h3>
-            </div>
-            <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
-                <p>
-                    Extracurricular activities are vital for the comprehensive development of children, particularly
-                    within the Indian educational system. These activities, which include sports, arts, music, drama,
-                    and various clubs, offer numerous benefits that extend beyond academic learning. They help children
-                    develop essential social skills by interacting with peers in diverse settings, promoting teamwork,
-                    communication, and empathy. Engaging in activities like chess or music can enhance cognitive
-                    functions, leading to better academic performance. Additionally, physical activities contribute to
-                    overall health, combating sedentary lifestyles and associated health issues. Creative pursuits
-                    foster innovation and critical thinking, essential skills in today's world.
-                </p>
-                <a class="button button-primary-gradient" href="#"><span>read more</span></a>
-            </div>
-            <div class="col-xl-5 wow fadeIn" data-wow-delay=".4s">
-                <div class="flip-container">
-                    <div class="flipper">
-                        <div class="front">
-                            <img class="img-rounded" src="public/assets/images/kidgarden.jpg" alt="Front Image">
-                        </div>
-                        <div class="back">
-                            <img class="img-rounded" src="public/assets/images/kidgarden2.jpg" alt="Back Image">
-                        </div>
+    <div class="row row-50 justify-content-center justify-content-lg-between">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <h3 class="h-custom-1 f1">A Few Words About Extra Curricular Activities</h3>
+            <a class="button button-animated" href="#"><span>Enquiry</span></a>
+        </div>
+        <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
+            <p>
+                Extracurricular activities are vital for the comprehensive development of children, particularly
+                within the Indian educational system. These activities, which include sports, arts, music, drama,
+                and various clubs, offer numerous benefits that extend beyond academic learning. They help children
+                develop essential social skills by interacting with peers in diverse settings, promoting teamwork,
+                communication, and empathy. Engaging in activities like chess or music can enhance cognitive
+                functions, leading to better academic performance. Additionally, physical activities contribute to
+                overall health, combating sedentary lifestyles and associated health issues. Creative pursuits
+                foster innovation and critical thinking, essential skills in today's world.
+            </p>
+            <a class="button button-primary-gradient" href="#"><span>read more</span></a>
+        </div>
+
+        <div class="col-xl-5 wow fadeIn" data-wow-delay=".4s">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <img class="img-rounded" src="public/assets/images/kidgarden.jpg" alt="Front Image">
+                    </div>
+                    <div class="back">
+                        <img class="img-rounded" src="public/assets/images/kidgarden2.jpg" alt="Back Image">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Featured Projects-->
 <section class="section section-lg bg-default text-center">
@@ -117,7 +124,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/mudcraftimg.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/mudcraftimg.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -136,7 +144,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/gardanimg2.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/gardanimg2.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -155,7 +164,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/Animalcareimg.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/Animalcareimg.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -174,7 +184,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/paintingimg.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/paintingimg.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -193,7 +204,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/healthimg.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/healthimg.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -212,7 +224,8 @@
                     <figure class="post-minimal-media">
                         <div class="flip-container">
                             <div class="flipper">
-                                <a href="#"><img class="post-minimal-image" src="public/assets/images/simmingimg.jpg" alt="" width="370" height="260" /></a>
+                                <a href="#"><img class="post-minimal-image" src="public/assets/images/simmingimg.jpg"
+                                        alt="" width="370" height="260" /></a>
                             </div>
                         </div>
                     </figure>
@@ -226,7 +239,8 @@
                 </div>
             </div>
         </div>
-        <a class="button button-lg button-primary-gradient wow fadeIn" data-wow-delay=".2s" href="#"><span>view all courses</span></a>
+        <a class="button button-lg button-primary-gradient wow fadeIn" data-wow-delay=".2s" href="#"><span>view all
+                courses</span></a>
     </div>
 </section>
 
@@ -294,40 +308,40 @@
     <div class="owl-carousel owl-carousel-dots-space wow fadeIn" data-items="2" data-sm-items="3" data-md-items="4"
         data-lg-items="5" data-xl-items="6" data-dots="true" data-nav="false" data-stage-padding="0" data-loop="false"
         data-margin="0" data-mouse-drag="false" data-lightgallery="group">
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-1-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/tcs.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-1-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/tcs.jpg" alt="" width="320" height="320" />
             </div>
         </a>
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-2-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/google.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-2-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/google.jpg" alt="" width="320" height="320" />
             </div>
         </a>
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-3-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/asian.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-3-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/asian.jpg" alt="" width="320" height="320" />
             </div>
         </a>
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-4-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/tata.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-4-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/tata.jpg" alt="" width="320" height="320" />
             </div>
         </a>
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-5-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/adani.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-5-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/adani.jpg" alt="" width="320" height="320" />
             </div>
         </a>
-        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/personal-page-gallery-6-original.jpg"
+        <!-- Thumbnail Thin--><a class="thumbnail-thin" href="public/assets/images/godrej.jpg"
             data-lightgallery="item">
             <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image"
-                    src="public/assets/images/personal-page-gallery-6-320x320.jpg" alt="" width="320" height="320" />
+                    src="public/assets/images/godrej.jpg" alt="" width="320" height="320" />
             </div>
         </a>
     </div>
