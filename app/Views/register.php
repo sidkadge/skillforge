@@ -1,67 +1,110 @@
-<?php include('header.php') ?>
-<link rel="stylesheet" href="public/assets/css/register.css">
-<div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="login-box">
-                <div class="login-snip">
-                    <input id="tab-1" type="radio" name="tab" class="sign-in"><label for="tab-1"
-                        class="tab">Login</label>
-                    <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign
-                        Up</label>
-                    <div class="login-space">
-                        <div class="login">
-                            <div class="group">
-                                <label for="user" class="label">Username</label>
-                                <input id="user" type="text" class="input" placeholder="Enter your username">
-                            </div>
-                            <div class="group">
-                                <label for="pass" class="label">Password</label>
-                                <input id="pass" type="password" class="input" data-type="password"
-                                    placeholder="Enter your password">
-                            </div>
-                            <div class="group">
-                                <input id="check" type="checkbox" class="check" checked>
-                                <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                            </div>
-                            <div class="group">
-                                <input type="submit" class="button" value="Sign In">
-                            </div>
-                            <div class="hr"></div>
-                            <div class="foot">
-                                <a href="#">Forgot Password?</a>
-                            </div>
-                        </div>
-                        <div class="sign-up-form">
-                            <div class="group">
-                                <label for="user" class="label">Username</label>
-                                <input id="user" type="text" class="input" placeholder="Create your Username">
-                            </div>
-                            <div class="group">
-                                <label for="pass" class="label">Password</label>
-                                <input id="pass" type="password" class="input" data-type="password"
-                                    placeholder="Create your password">
-                            </div>
-                           
-                            <div class="group">
-                                <label for="pass" class="label">Email Address</label>
-                                <input id="pass" type="text" class="input" placeholder="Enter your email address">
-                            </div>
-                            <div class="group">
-                                <input type="submit" class="button" value="Sign Up">
-                            </div>
-                            <div class="hr"></div>
-                            <div class="foot">
-                                <label for="tab-1">Already Member?</label>
-                            </div>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IF-edge">
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <title>Website With login & registration | shyzu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="public/assets/css/registerlogin.css">
+</head>
+
+<body>
+
+    <header>
+        <h2 class="logo"></h2>
+        <nav class="navigation">
+            <a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
+        </nav>
+    </header>
+
+    <div class="wrapper active active-popup">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
                 </div>
-            </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-<script src="public/assets/js/core.min.js"></script>
-<script src="public/assets/js/script.js"></script>
+
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <div class="watermark">by shyzu</div>
+</body>
+<script>
+    // @codehal
+    // @shyzu
+    // github.com/lucky5isuru
+
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const iconClose = document.querySelector('.icon-close');
+
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('active');
+    });
+
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.remove('active');
+    });
+
+    // Comment out or remove the btnPopup event listener to keep the login form always visible
+    // const btnPopup = document.querySelector('.btnLogin-popup');
+    // btnPopup.addEventListener('click', () => {
+    //     wrapper.classList.add('active-popup');
+    // });
+
+    iconClose.addEventListener('click', () => {
+        wrapper.classList.remove('active-popup');
+    });
+</script>
+</html>
