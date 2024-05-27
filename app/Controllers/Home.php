@@ -126,17 +126,9 @@ class Home extends BaseController
             } elseif ($user['role'] === 'faculty') {
                 return redirect()->to(base_url('facultydashboard'));
             } else {
-                session()->setFlashdata('error', 'Invalid role');
-                return redirect()->to(base_url('/'));
+                session()->setFlashdata('error', 'Invalid credentials');
+                return redirect()->to(base_url('/')); 
             }
-        } else {
-            session()->setFlashdata('error', 'Invalid password');
-            return redirect()->to(base_url('/'));
         }
-    } else {
-        session()->setFlashdata('error', 'User not found');
-        return redirect()->to(base_url('/'));
-    }
-}
-
+        
 }
