@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\Admin_Model;
 
 class Home extends BaseController
 {
@@ -61,7 +62,7 @@ class Home extends BaseController
         public function userregister()
         {
           $db= \Config\Database::connect();
-          // print_r($_POST);die;
+        //   print_r($_POST);die;
 
           $username = $this->request->getPost('username');
           $email = $this->request->getPost('email');
@@ -70,6 +71,7 @@ class Home extends BaseController
           $data = [
                'username'=> $username,
                'email'=> $email,
+               'role' =>'student',
                'password'=> $password
           ];
 
@@ -79,30 +81,23 @@ class Home extends BaseController
           return redirect()->to(base_url('success_page'));
         }
 
+   
         public function userlogin()
-{
-    $db = \Config\Database::connect();
-
-    $email = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
-    
-    // Query the database to check if the user exists
-    $builder = $db->table('tbl_register');
-    $user = $builder->where('email', $email)->get()->getRow();
-
-    // Check if a user with the provided email exists
-    if ($user) {
-        // If the user exists, verify the password
-        if (password_verify($password, $user->password)) {
-            // Password matches, redirect to success page
-            return redirect()->to(base_url('success_page'));
-        } else {
-            // Password does not match, display error message
-            echo "Invalid password";
+        {
+            $model = new Admin_Model();
+            $where = [
+                'email' => $this->request->getVar('email'),
+                'password' => $this->request->getVar('password')      
+            ];
+            $result = $model->checkCredentials($where);
+            
+            if ($result != '') {
+                session()->set('user_id', $result['r_id']);
+                return redirect('Admindasboard');
+            } else {
+                session()->setFlashdata('error', 'Invalid credentials');
+                return redirect()->to(base_url('/')); 
+            }
         }
-    } else {
-        // User does not exist, display error message
-        echo "User not found";
-    }
-}
+        
 }
