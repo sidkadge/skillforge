@@ -113,7 +113,7 @@
     <div class="popup-content">
         <span class="close">&times;</span>
         <h2>Enquiry Form</h2>
-        <form id="enquiryForm">
+        <form id="enquiryForm" method="POST" action="<?= base_url('submitEnquiry') ?>">
             <label for="studentName">Student Name:</label>
             <input type="text" id="studentName" name="studentName" required>
 
@@ -148,6 +148,7 @@
         </form>
     </div>
 </div>
+
 
 <!-- Featured Projects-->
 <section class="section section-lg bg-default text-center">
