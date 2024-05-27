@@ -79,7 +79,7 @@
     <div class="row row-50 justify-content-center justify-content-lg-between">
         <div class="col-12 d-flex justify-content-between align-items-center">
             <h3 class="h-custom-1 f1">A Few Words About Extra Curricular Activities</h3>
-            <a class="button button-animated" href="#"><span>Enquiry</span></a>
+            <a class="button button-animated" id="openEnquiryForm" href="#"><span>Enquiry</span></a>
         </div>
         <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
             <p>
@@ -109,9 +109,45 @@
         </div>
     </div>
 </section>
+<div id="enquiryPopup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Enquiry Form</h2>
+        <form id="enquiryForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
 
+            <label for="parentsName">Parents Name:</label>
+            <input type="text" id="parentsName" name="parentsName" required>
 
+            <label for="contactNo">Contact No:</label>
+            <input type="tel" id="contactNo" name="contactNo" required>
 
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="medium">Medium:</label>
+            <input type="text" id="medium" name="medium" required>
+
+            <label for="class">Class:</label>
+            <input type="text" id="class" name="class" required>
+
+            <label for="languages">Languages:</label>
+            <input type="text" id="languages" name="languages" required>
+
+            <label for="schoolName">School Name:</label>
+            <input type="text" id="schoolName" name="schoolName" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="areaOfResidence">Area of Residence:</label>
+            <input type="text" id="areaOfResidence" name="areaOfResidence" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
 <!-- Featured Projects-->
 <section class="section section-lg bg-default text-center">
@@ -346,4 +382,42 @@
         </a>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("enquiryPopup");
+        var popupContent = document.querySelector(".popup-content");
+        var openButton = document.getElementById("openEnquiryForm");
+        var closeButton = document.getElementsByClassName("close")[0];
+
+        // Function to open the popup with animation
+        function openPopup(event) {
+            event.preventDefault();
+            popup.classList.remove("hide");
+            popupContent.classList.remove("hide");
+            popup.style.display = "block";
+        }
+
+        // Function to close the popup with animation
+        function closePopup() {
+            popup.classList.add("hide");
+            popupContent.classList.add("hide");
+            setTimeout(function () {
+                popup.style.display = "none";
+            }, 500); // Match this to the duration of fadeOut and slideOut animations
+        }
+
+        // Open the popup when the button is clicked
+        openButton.onclick = openPopup;
+
+        // Close the popup when the close button is clicked
+        closeButton.onclick = closePopup;
+
+        // Close the popup when clicking outside of the popup content
+        window.onclick = function (event) {
+            if (event.target == popup) {
+                closePopup();
+            }
+        }
+    });
+</script>
 <?php include('footer.php') ?>
