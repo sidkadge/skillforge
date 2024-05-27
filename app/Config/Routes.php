@@ -16,3 +16,6 @@ $routes->get('Admindasboard', 'AdminController::Admindasboard');
 
 $routes->post('contactus', 'Home::contactus');
 
+$routes->post('userregister', 'Home::userregister');
+$routes->post('userlogin', 'Home::userlogin');
+
