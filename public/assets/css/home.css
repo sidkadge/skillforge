@@ -1,0 +1,42 @@
+.button-animated {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff5722; /* Changed color to a shade of orange */
+  border-radius: 5px;
+  text-decoration: none;
+  animation: heartbeat 1.5s infinite;
+  margin-right: 200px;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.4);
+  }
+  75% {
+    transform: scale(1.4);
+}
+}
+
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+.section-lg{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
