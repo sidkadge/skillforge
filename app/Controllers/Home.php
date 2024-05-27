@@ -133,6 +133,7 @@ class Home extends BaseController
             session()->setFlashdata('error', 'Invalid password');
             return redirect()->to(base_url('/'));
         }
+
     } else {
         session()->setFlashdata('error', 'User not found');
         return redirect()->to(base_url('/'));
@@ -140,3 +141,40 @@ class Home extends BaseController
 }
 
 }
+
+        public function submitEnquiry()
+        {
+            $db = \Config\Database::connect();
+               // print_r($_POST);die;
+           
+                $studentName = $this->request->getPost('studentName');
+                $parentsName = $this->request->getPost('parentsName');
+                $contactNo = $this->request->getPost('contactNo');
+                $email = $this->request->getPost('email');
+                $medium = $this->request->getPost('medium');
+                $class = $this->request->getPost('class');
+                $languages = $this->request->getPost('languages');
+                $schoolName = $this->request->getPost('schoolName');
+                $age = $this->request->getPost('age');
+                $areaOfResidence = $this->request->getPost('areaOfResidence');
+    
+                $data = [
+                    'student_name' => $studentName,
+                    'parents_name' => $parentsName,
+                    'contact_no' => $contactNo,
+                    'email' => $email,
+                    'medium' => $medium,
+                    'class' => $class,
+                    'languages' => $languages,
+                    'school_name' => $schoolName,
+                    'age' => $age,
+                    'area_of_residence' => $areaOfResidence
+                ];
+   // print_r($_POST);die;
+                $builder = $db->table('tbl_enquiry');
+                $builder->insert($data);
+    
+                return redirect()->to('home');
+            }
+        
+    }
