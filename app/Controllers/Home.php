@@ -82,22 +82,61 @@ class Home extends BaseController
         }
 
    
+        // public function userlogin()
+        // {
+        //     $model = new Admin_Model();
+        //     $where = [
+        //         'email' => $this->request->getVar('email'),
+        //         'password' => $this->request->getVar('password')      
+        //     ];
+        //     $result = $model->checkCredentials($where);
+        //     // print_r($result);die;
+        //     if ($result != '') {
+        //         session()->set('user_id', $result['r_id']);
+        //         return redirect()->to('Admindasboard');
+        //     } else {
+        //         session()->setFlashdata('error', 'Invalid credentials');
+        //         return redirect()->to(base_url('/')); 
+        //     }
+        // }
         public function userlogin()
-        {
-            $model = new Admin_Model();
-            $where = [
-                'email' => $this->request->getVar('email'),
-                'password' => $this->request->getVar('password')      
-            ];
-            $result = $model->checkCredentials($where);
-            
-            if ($result != '') {
-                session()->set('user_id', $result['r_id']);
-                return redirect('Admindasboard');
+{
+    $model = new Admin_Model();
+    $email = $this->request->getVar('email');
+    $password = $this->request->getVar('password');
+
+    // Fetch user by email
+    $user = $model->checkCredentials(['email' => $email]);
+
+    if ($user) {
+        // Verify the password
+        if ($password === $user['password']) { // Change this to password_verify if passwords are hashed
+            // Set session data
+            session()->set('user_id', $user['r_id']);
+            session()->set('username', $user['username']);
+            session()->set('email', $user['email']);
+            session()->set('role', $user['role']);
+            session()->set('logged_in', true);
+
+            // Redirect based on role
+            if ($user['role'] === 'student') {
+                return redirect()->to(base_url('studentdashboard'));
+            } elseif ($user['role'] === 'Admin') {
+                return redirect()->to(base_url('Admindasboard'));
+            } elseif ($user['role'] === 'faculty') {
+                return redirect()->to(base_url('facultydashboard'));
             } else {
-                session()->setFlashdata('error', 'Invalid credentials');
-                return redirect()->to(base_url('/')); 
+                session()->setFlashdata('error', 'Invalid role');
+                return redirect()->to(base_url('/'));
             }
+        } else {
+            session()->setFlashdata('error', 'Invalid password');
+            return redirect()->to(base_url('/'));
         }
-        
+    } else {
+        session()->setFlashdata('error', 'User not found');
+        return redirect()->to(base_url('/'));
+    }
+}
+
 }
