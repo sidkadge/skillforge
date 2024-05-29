@@ -10,26 +10,79 @@
       <meta name="description" content="CodedThemes">
       <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
       <meta name="author" content="CodedThemes">
-      <!-- Favicon icon -->
-      <link rel="icon" href="public/dashborads/images/favicon.ico" type="image/x-icon">
-      <!-- Google font-->
+      <link rel="icon" href="<?=base_url(); ?>public/dashborads/images/favicon.ico" type="image/x-icon">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-      <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="public/dashborads/css/bootstrap/css/bootstrap.min.css">
-      <!-- themify-icons line icon -->
-      <link rel="stylesheet" type="text/css" href="public/dashborads/icon/themify-icons/themify-icons.css">
-      <!-- ico font -->
-      <link rel="stylesheet" type="text/css" href="public/dashborads/icon/icofont/css/icofont.css">
-      <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="public/dashborads/css/style.css">
-      <link rel="stylesheet" type="text/css" href="public/dashborads/css/jquery.mCustomScrollbar.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-        rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>public/dashborads/css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>public/dashborads/icon/themify-icons/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>public/dashborads/icon/icofont/css/icofont.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>public/dashborads/css/style.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>public/dashborads/css/jquery.mCustomScrollbar.css">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <style>
+        /* Container for the toast notifications */
+        #toast-container {
+            position: fixed;
+            top: 1em;
+            right: 1em;
+            z-index: 9999;
+        }
 
+        /* General style for each toast */
+        .toast {
+            padding: 15px;
+            margin-bottom: 1em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0.9;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* Style for success toast */
+        .toast-success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        /* Style for error toast */
+        .toast-error {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        /* Hover effect for toast */
+        .toast:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Style for the message inside the toast */
+        .toast-message {
+            font-size: 1em;
+        }
+    </style>
   </head>
 
   <body>
+  <?php if (session()->has('success')): ?>
+    <div id="toast-container" class="toast-top-right">
+        <div class="toast toast-success" aria-live="polite">
+            <div class="toast-message">
+                <?= session('success') ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+
+<?php if (session()->has('error')): ?>
+    <div id="toast-container" class="toast-top-right">
+        <div class="toast toast-error" aria-live="assertive">
+            <div class="toast-message">
+                <?= session('error') ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
     <!-- Pre-loader start -->
     <div class="theme-loader">
         <div class="ball-scale">
@@ -133,7 +186,7 @@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Dashboard</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
-                                    <a href="<?php echo base_url() ?>admin_dashboard">
+                                    <a href="<?php echo base_url() ?>Admindasboard">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
@@ -148,7 +201,7 @@
                                         <span class="pcoded-micon"><i class="fa fa-calendar" aria-hidden="true"></i>
                                         </span>
                                         <span class="pcoded-mtext"
-                                            data-i18n="nav.basic-components.alert">Calendar</span>
+                                            data-i18n="nav.basic-components.alert">Students List</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -159,48 +212,55 @@
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span class="pcoded-mtext"
-                                            data-i18n="nav.basic-components.main">Appointment</span>
+                                            data-i18n="nav.basic-components.main">Masters</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="<?=base_url(); ?>add_appointment">
+                                            <a href="<?=base_url(); ?>add_abroadclass">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Add Appointment</span>
+                                                    data-i18n="nav.basic-components.breadcrumbs">Add Abroad Class</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>Booked_Slots">
+                                            <a href="<?=base_url(); ?>abroadclasslist">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">List of
-                                                    Appointment</span>
+                                                    data-i18n="nav.basic-components.breadcrumbs">Abroad Class List</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>All_Appointment">
+                                            <a href="<?=base_url(); ?>add_schoolstudentclass">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">All Appointment</span>
+                                                    data-i18n="nav.basic-components.breadcrumbs">Add School Student Class</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="<?=base_url(); ?>services">
+                                            <a href="<?=base_url(); ?>schoolclasslist">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Ragister Services</span>
+                                                    data-i18n="nav.basic-components.breadcrumbs">School Student Class List</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="<?=base_url(); ?>Services_List">
+                                            <a href="<?=base_url(); ?>addfacultyskills">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Services List</span>
+                                                    data-i18n="nav.basic-components.breadcrumbs">Add Facukty Skills</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>facultyskilllist">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Facukty Skills List</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
@@ -213,136 +273,19 @@
                                 </li>
 
 
-                            </ul>
-
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu ">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="fa fa-gear"></i><b>S</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Settings</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="<?=base_url(); ?>Add_user">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Add User</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class=" ">
-                                            <a href="<?=base_url(); ?>user-list">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">User List</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-
-
-                                        <li class=" ">
-                                            <a href="<?=base_url(); ?>add_workinghour">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add
-                                                    Working Hours</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class=" ">
-                                            <a href="<?=base_url(); ?>my_slots">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">List of Working
-                                                    Hours</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu ">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Class</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-
-                                        <li class="">
-                                            <a href="<?=base_url(); ?>Add_class">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Add Student</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="<?=base_url(); ?>Students">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Students List</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                </li>
                             </ul>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu ">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="fa fa-file"
-                                                aria-hidden="true"></i><b>R</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Reports</span>
+                                <li class="">
+                                    <a href="<?=base_url(); ?>calendar">
+                                        <span class="pcoded-micon"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                        <span class="pcoded-mtext"
+                                            data-i18n="nav.basic-components.alert">Faculty List</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="<?=base_url(); ?>Appointment_reports">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Appointment
-                                                    Reports</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class="">
-                                            <a href="<?=base_url(); ?>services_Reports">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Services Reports</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="<?=base_url(); ?>Income">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Class
-                                                    Income Reports</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="<?=base_url(); ?>getallincome">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">All Reports</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
                                 </li>
+
                             </ul>
+  
                         </div>
                     </nav>

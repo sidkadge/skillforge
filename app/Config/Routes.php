@@ -14,6 +14,35 @@ $routes->get('register', 'Home::register');
 
 $routes->get('login', 'Home::login');
 $routes->get('Admindasboard', 'AdminController::Admindasboard');
+$routes->get('add_abroadclass', 'AdminController::addAbroadclass');
+$routes->post('abrordclassname','AdminController::abrordclassname');
+$routes->get('abroadclasslist', 'AdminController::abroadclasslist');
+$routes->get('setabrordclassname', 'AdminController::setabrordclassname');
+$routes->post('setabrordclassname', 'AdminController::setabrordclassname');
+$routes->get('delete_compan/(:any)/(:any)', 'AdminController::delete_compan/$1/$1');
+$routes->post('delete_compan', 'AdminController::delete');
+
+
+
+$routes->get('add_schoolstudentclass', 'AdminController::add_schoolstudentclass');
+$routes->post('setschoolclassname', 'AdminController::setschoolclassname');
+$routes->get('schoolclasslist', 'AdminController::schoolclasslist');
+$routes->post('add_abroadclass/(:any)', 'AdminController::addAbroadclass/$1');
+$routes->get('add_schoolstudentclass/(:any)', 'AdminController::add_schoolstudentclass/$1');
+$routes->post('deletefromschollclass', 'AdminController::deletefromschollclass');
+
+$routes->get('addfacultyskills', 'AdminController::addfacultyskills');
+$routes->post('setfacultyskills', 'AdminController::setfacultyskills');
+$routes->get('facultyskilllist', 'AdminController::facultyskilllist');
+$routes->get('addfacultyskills/(:any)', 'AdminController::addfacultyskills/$1');
+$routes->post('deletefacultyskills', 'AdminController::deletefacultyskills');
+
+
+$routes->post('abrordclassname/(:any)', 'AdminController::addAbroadclass/$1');
+
+$routes->post('add_abroadclass/(:any)', 'AdminController::addAbroadclass/$1');
+
+$routes->get('add_abroadclass/(:any)', 'AdminController::addAbroadclass/$1');
 
 $routes->get('studentdashboard', 'AdminController::studentdashboard');
 $routes->get('uploadmedia', 'AdminController::uplodefiles');
