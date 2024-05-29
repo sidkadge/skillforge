@@ -1,5 +1,5 @@
 <?php 
-include __DIR__.'/../student/Studentsidebar.php';
+include __DIR__.'/../Faculty/Facultysidebar.php';
 
 ?>
 

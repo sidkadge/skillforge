@@ -50,7 +50,11 @@ $routes->post('upload_img', 'AdminController::upload_img');
 $routes->post('upload_video', 'AdminController::upload_video');
 $routes->post('upload_doc', 'AdminController::upload_doc');
 
-$routes->get('facultydashboard', 'AdminController::facultydashboard');
+$routes->get('Facultydashboard', 'AdminController::Facultydashboard');
+$routes->get('Faculty_uploadmedia', 'AdminController::Faculty_uploadmedia');
+$routes->post('tbl_upload_image', 'AdminController::tbl_upload_image');
+$routes->post('tbl_upload_video', 'AdminController::tbl_upload_video');
+$routes->post('tbl_upload_doc', 'AdminController::tbl_upload_doc');
 
 $routes->post('contactus', 'Home::contactus');
 

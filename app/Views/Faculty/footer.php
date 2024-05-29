@@ -29,6 +29,14 @@ var nav = $('.fixed-button');
          nav.removeClass('active');
      }
  });
+ setTimeout(() => {
+        const toastContainer = document.getElementById('toast-container');
+        if (toastContainer) {
+            toastContainer.style.transition = 'opacity 0.5s ease-in-out';
+            toastContainer.style.opacity = '0';
+            setTimeout(() => toastContainer.remove(), 500); // remove from DOM after fade out
+        }
+    }, 3000);
 </script>
 </body>
 
