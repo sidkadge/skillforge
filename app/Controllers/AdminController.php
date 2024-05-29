@@ -342,22 +342,42 @@ public function showCareerForm()
         // Ensure $data['resume'] is an object before proceeding
         if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
             // Handle file upload
-            $resumePath = $data['resume']->store();
+            $newName = $data['resume']->getRandomName();
+            $resumePath = 'uploads/faculty_resume' . $newName;
+            
+            // Create directory if it doesn't exist 
+            if (!is_dir(ROOTPATH . 'public/uploads/faculty_resume')) {
+                mkdir(ROOTPATH . 'public/uploads/faculty_resume', 0755, true);
+            }
+    
+            // Move the file to the specified directory
+            $data['resume']->move(ROOTPATH . 'public/uploads/faculty_resume', $newName);
+            
+            // Set the resume path to be saved in the database
             $data['resume'] = $resumePath;
         } else {
             // Handle file upload failure or empty file
             $data['resume'] = ''; // Set to empty string or handle accordingly
         }
     
+        // Ensure column names are all lowercase and match your table structure
+        $dbData = [
+            'fullName' => $data['fullName'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'position' => $data['position'],
+            'skills' => $data['skills'],
+            'resume' => $data['resume'],
+            'coverLetter' => $data['coverLetter'],
+        ];
+    
         // Save data to the database
-        $model->saveCareerData($data);
+        $model->saveCareerData($dbData);
     
         // Redirect or load a success view
         return redirect()->to(base_url('career'));
     }
     
-
-
 public function studentprofile()
 {
     $model = new Admin_Model(); 
