@@ -314,6 +314,50 @@ public function deletefacultyskills()
     return redirect()->back();
 }
 
+public function showCareerForm()
+    {
+        $model = new Admin_Model();
+        $wherecond = array('is_deleted' => 'Y');
+        $facultyskill = $model->getalldata('tbl_faculty_skills', $wherecond);
+        
+        $data['facultyskill'] = $facultyskill ? $facultyskill : [];
+        echo view('career', $data);
+    }
+    public function saveCareerForm()
+    {
+        // Load the model
+        $model = new Admin_Model();
+    
+        // Retrieve form data
+        $data = [
+            'fullName' => $this->request->getPost('fullName'),
+            'email' => $this->request->getPost('email'),
+            'phone' => $this->request->getPost('phone'),
+            'position' => $this->request->getPost('position'),
+            'skills' => implode(',', $this->request->getPost('skills')),
+            'resume' => $this->request->getFile('resume'), // Note: This should be an object representing the uploaded file
+            'coverLetter' => $this->request->getPost('coverLetter'),
+        ];
+    
+        // Ensure $data['resume'] is an object before proceeding
+        if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
+            // Handle file upload
+            $resumePath = $data['resume']->store();
+            $data['resume'] = $resumePath;
+        } else {
+            // Handle file upload failure or empty file
+            $data['resume'] = ''; // Set to empty string or handle accordingly
+        }
+    
+        // Save data to the database
+        $model->saveCareerData($data);
+    
+        // Redirect or load a success view
+        return redirect()->to(base_url('career'));
+    }
+    
+
+
 public function studentprofile()
 {
     $model = new Admin_Model(); 
@@ -457,6 +501,7 @@ public function Facultydashboard()
         }
     }  
   
+
 
 
 
