@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Student Dashboard</title>
+    <title>Faculty Dashboard</title>
    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -26,10 +26,70 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
         rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        /* Container for the toast notifications */
+        #toast-container {
+            position: fixed;
+            top: 1em;
+            right: 1em;
+            z-index: 9999;
+        }
 
+        /* General style for each toast */
+        .toast {
+            padding: 15px;
+            margin-bottom: 1em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0.9;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* Style for success toast */
+        .toast-success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        /* Style for error toast */
+        .toast-error {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        /* Hover effect for toast */
+        .toast:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Style for the message inside the toast */
+        .toast-message {
+            font-size: 1em;
+        }
+    </style>
   </head>
 
   <body>
+  <?php if (session()->has('success')): ?>
+    <div id="toast-container" class="toast-top-right">
+        <div class="toast toast-success" aria-live="polite">
+            <div class="toast-message">
+                <?= session('success') ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+
+<?php if (session()->has('error')): ?>
+    <div id="toast-container" class="toast-top-right">
+        <div class="toast toast-error" aria-live="assertive">
+            <div class="toast-message">
+                <?= session('error') ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
     <!-- Pre-loader start -->
     <div class="theme-loader">
         <div class="ball-scale">
@@ -108,7 +168,7 @@
                                 <a href="#!">
                                     <img src="<?=base_url(); ?>public/dashborads/images/avatar-4.jpg" class="img-radius"
                                         alt="User-Profile-Image">
-                                    <span>Admin</span>
+                                    <span>Faculty</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -145,7 +205,7 @@
                             </ul>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu">
-                                    <a href="<?=base_url(); ?>uploadmedia">
+                                    <a href="<?=base_url(); ?>Faculty_uploadmedia">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span class="pcoded-mtext"
                                             data-i18n="nav.basic-components.main">Upload Media</span>

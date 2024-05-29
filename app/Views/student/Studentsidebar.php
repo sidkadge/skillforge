@@ -108,7 +108,7 @@
                                 <a href="#!">
                                     <img src="<?=base_url(); ?>public/dashborads/images/avatar-4.jpg" class="img-radius"
                                         alt="User-Profile-Image">
-                                    <span>Admin</span>
+                                    <span>Student</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
