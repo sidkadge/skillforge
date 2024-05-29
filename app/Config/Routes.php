@@ -44,6 +44,14 @@ $routes->post('add_abroadclass/(:any)', 'AdminController::addAbroadclass/$1');
 
 $routes->get('add_abroadclass/(:any)', 'AdminController::addAbroadclass/$1');
 
+$routes->get('studentdashboard', 'AdminController::studentdashboard');
+$routes->get('uploadmedia', 'AdminController::uplodefiles');
+$routes->post('upload_img', 'AdminController::upload_img');
+$routes->post('upload_video', 'AdminController::upload_video');
+$routes->post('upload_doc', 'AdminController::upload_doc');
+
+$routes->get('facultydashboard', 'AdminController::facultydashboard');
+
 $routes->post('contactus', 'Home::contactus');
 
 $routes->post('userregister', 'Home::userregister');
