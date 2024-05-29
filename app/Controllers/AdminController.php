@@ -38,7 +38,7 @@ class AdminController extends BaseController
             $imageName = $imageFile->getRandomName();
 
             try {
-                $imageFile->move(ROOTPATH . 'public/uploads/Images', $imageName);
+                $imageFile->move(ROOTPATH . 'public/uploads/student/Images', $imageName);
             } catch (FileException $e) {
                 return redirect()->back()->with('error', 'Failed to upload image.');
             }
@@ -70,7 +70,7 @@ class AdminController extends BaseController
             $videoName = $videoFile->getRandomName();
     
             try {
-                $videoFile->move(ROOTPATH . 'public/uploads/Videos', $videoName);
+                $videoFile->move(ROOTPATH . 'public/uploads/student/Videos', $videoName);
             } catch (FileException $e) {
                 return redirect()->back()->with('error', 'Failed to upload video.');
             }
@@ -101,7 +101,7 @@ class AdminController extends BaseController
             $DocName = $DocFile->getRandomName();
 
             try {
-                $DocFile->move(ROOTPATH . 'public/uploads/Doc', $DocName);
+                $DocFile->move(ROOTPATH . 'public/uploads/student/Doc', $DocName);
             } catch (FileException $e) {
                 return redirect()->back()->with('error', 'Failed to upload document');
             }
@@ -122,15 +122,6 @@ class AdminController extends BaseController
             return redirect()->back()->with('error', 'Invalid file or file uploading failed.');
         }
     }    
-
-//   these all for faculty 
-    public function facultydashboard()
-    {
-       $model = new Admin_Model;
-       $data['studentlist'] = $model->getstudentlist();
-       echo view('Faculty/Facultydashboard');
-    }
-
 
    public function addAbroadclass()
 {
@@ -316,6 +307,7 @@ public function deletefacultyskills()
     session()->setFlashdata('success', 'Data deleted successfully.');
     return redirect()->back();
 }
+
 public function studentprofile()
 {
     $model = new Admin_Model(); 
@@ -340,5 +332,128 @@ public function studentuplodedmedia()
 {
     echo view('Admin/studentuplodedmedia');
 }
+
+
+
+//   these all for faculty 
+
+public function Facultydashboard()
+   {
+      $model = new Admin_Model;
+      $data['studentlist'] = $model->getstudentlist();
+      echo view('Faculty/Facultydashboard');
+   }
+
+   public function Faculty_uploadmedia()
+   {
+      echo view('Faculty/Faculty_uploadmedia');
+   }
+
+   public function tbl_upload_image()
+    {
+        $db = \Config\Database::connect();
+        $this->session = \Config\Services::session();
+        
+        $imageFile = $this->request->getFile('tbl_upload_image');
+
+        if ($imageFile && $imageFile->isValid() && $imageFile->getClientMimeType() && strpos($imageFile->getClientMimeType(), 'image') !== false && !$imageFile->hasMoved()) {
+            $imageName = $imageFile->getRandomName();
+
+            try {
+                $imageFile->move(ROOTPATH . 'public/uploads/faculty/Images', $imageName);
+            } catch (FileException $e) {
+                return redirect()->back()->with('error', 'Failed to upload image.');
+            }
+
+            $faculty_id = $this->session->get('user_id');
+
+            $data = [
+                'image_name' => $imageName,
+                'faculty_id' => $faculty_id,
+            ];
+
+            $builder = $db->table('tbl_upload_img');
+            $builder->insert($data);
+
+            session()->setFlashdata('success', 'image uploaded successfully.');
+             return redirect()->to('Faculty_uploadmedia');
+             session()->setFlashdata('error', 'Invalid file or file upload failed.');
+          
+            return redirect()->to('Faculty_uploadmedia');
+        }
+    }
+
+
+    public function tbl_upload_video()
+    {       
+        $db = \Config\Database::connect();
+        $this->session = \Config\Services::session();
+        
+        $videoFile = $this->request->getFile('tbl_upload_video');
+        // Check if a file was uploaded and if it's a video
+        if ($videoFile && $videoFile->isValid() && $videoFile->getClientMimeType() && strpos($videoFile->getClientMimeType(), 'video') !== false && !$videoFile->hasMoved()) {
+            $videoName = $videoFile->getRandomName();
+    
+            try {
+                $videoFile->move(ROOTPATH . 'public/uploads/faculty/Videos', $videoName);
+            } catch (FileException $e) {
+                return redirect()->back()->with('error', 'Failed to upload video.');
+            }
+    
+            $faculty_id = $this->session->get('user_id');
+   
+            $data = [
+                'video_name' => $videoName,
+                'faculty_id' => $faculty_id,
+            ];
+    
+            $builder = $db->table('tbl_upload_video');
+            $builder->insert($data);
+            session()->setFlashdata('success', 'Video uploaded successfully.');
+             return redirect()->to('Faculty_uploadmedia');
+             session()->setFlashdata('error', 'Invalid file or file upload failed.');
+          
+            return redirect()->to('Faculty_uploadmedia');
+        }
+    }
+
+    public function tbl_upload_doc()
+    {
+        $db = \Config\Database::connect();
+
+        $DocFile = $this->request->getFile('tbl_upload_doc');
+
+        if ($DocFile && $DocFile->isValid() && strpos($DocFile->getClientMimeType(), 'doc') !== false && !$DocFile->hasMoved()) {
+            $DocName = $DocFile->getRandomName();
+
+            try {
+                $DocFile->move(ROOTPATH . 'public/uploads/faculty/Doc', $DocName);
+            } catch (FileException $e) {
+                return redirect()->back()->with('error', 'Failed to upload document');
+            }
+
+            $session = \Config\Services::session();
+            $faculty_id = $session->get('user_id');
+
+            $data = [
+                'Doc_name' => $DocName,
+                'faculty_id' => $faculty_id,
+            ];
+
+            $builder = $db->table('tbl_upload_doc');
+            $builder->insert($data);
+
+            session()->setFlashdata('success', 'Document uploaded successfully.');
+             return redirect()->to('Faculty_uploadmedia');
+             session()->setFlashdata('error', 'Invalid file or file upload failed.');
+          
+            return redirect()->to('Faculty_uploadmedia');
+        }
+    }  
+  
+
+
+
+
 }
 

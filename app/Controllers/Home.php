@@ -13,9 +13,9 @@ class Home extends BaseController
     {
          echo view('aboutus');
     }
-    public function typrography()
+    public function our_courses()
     {
-         echo view('typrography');
+         echo view('our_courses');
     }
     public function contact_us()
     {
@@ -29,6 +29,19 @@ class Home extends BaseController
     {
          echo view('login');
     }
+    public function abroadstudent()
+    {
+         echo view('abroadstudent');
+    }
+    public function shoolstudent()
+    {
+         echo view('shoolstudent');
+    }
+    public function career()
+    {
+         echo view('career');
+    }
+    
     public function contactus()
     {
         // print_r($_POST);die;

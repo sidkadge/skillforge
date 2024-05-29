@@ -6048,7 +6048,7 @@ html:not(.tablet):not(.mobile) .profile-classic-caption {
 .page {
 	position: relative;
 	overflow: hidden;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	opacity: 0;
 }
 
@@ -8861,7 +8861,7 @@ html.tablet .ui-to-top {
 		margin-left: 6px;
 	}
 	.rd-navbar-static .rd-nav-link {
-		font-size: 18px;
+		font-size: 17px;
 	}
 }
 
@@ -14479,4 +14479,48 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	.slick-slider-1 .carousel-child {
 		padding-bottom: 80px;
 	}
+}
+.rd-navbar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rd-nav-item {
+    position: relative;
+    display: inline-block;
+}
+
+.rd-nav-link {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.rd-dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure this is higher than the slider images' z-index */
+}
+
+.rd-dropdown-item {
+    list-style-type: none;
+}
+
+.rd-dropdown-link {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #000;
+}
+
+.rd-dropdown-item:hover .rd-dropdown-link {
+    background-color: #ddd;
+}
+
+.rd-dropdown:hover .rd-dropdown-menu {
+    display: block;
 }
