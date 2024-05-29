@@ -195,18 +195,7 @@
 
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms"></div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="<?=base_url(); ?>calendar">
-                                        <span class="pcoded-micon"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                        <span class="pcoded-mtext"
-                                            data-i18n="nav.basic-components.alert">Students List</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                           
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
@@ -274,7 +263,7 @@
 
 
                             </ul>
-                            <ul class="pcoded-item pcoded-left-item">
+                            <!-- <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="<?=base_url(); ?>calendar">
                                         <span class="pcoded-micon"><i class="fa fa-calendar" aria-hidden="true"></i>
@@ -285,7 +274,102 @@
                                     </a>
                                 </li>
 
+                            </ul> -->
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                        <span class="pcoded-mtext"
+                                            data-i18n="nav.basic-components.main">Students</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>studentprofile">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Students Profile</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="<?=base_url(); ?>">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Abroad Student List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="<?=base_url(); ?>">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">School Student List </span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>studentuplodedmedia">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Student Uploded Media</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+
+
+
+
+
+                                    </ul>
+                                </li>
+
+
                             </ul>
-  
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                        <span class="pcoded-mtext"
+                                            data-i18n="nav.basic-components.main">Faculty</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>facultyprofile">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Faculty Profile</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>facultylist">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Faculty List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>facultyuplodedmedia">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">Faculty Uploded Media</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                      
+                                       
+
+
+
+
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
                         </div>
                     </nav>
