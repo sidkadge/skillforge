@@ -53,9 +53,11 @@ class AdminController extends BaseController
             $builder = $db->table('upload_img');
             $builder->insert($data);
 
-            return redirect()->back()->with('success', 'Image uploaded successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Invalid file or file upload failed.');
+            session()->setFlashdata('success', 'image uploaded successfully.');
+             return redirect()->to('uploadmedia');
+             session()->setFlashdata('error', 'Invalid file or file upload failed.');
+          
+            return redirect()->to('uploadmedia');
         }
     }
 
@@ -84,10 +86,12 @@ class AdminController extends BaseController
     
             $builder = $db->table('upload_video');
             $builder->insert($data);
-    
-            return redirect()->back()->with('success', 'Video uploaded successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Invalid file or file upload failed.');
+
+            session()->setFlashdata('success', 'video uploaded successfully.');
+            return redirect()->to('uploadmedia');
+            session()->setFlashdata('error', 'Invalid file or file upload failed.');
+         
+           return redirect()->to('uploadmedia');
         }
     }
 
@@ -117,9 +121,11 @@ class AdminController extends BaseController
             $builder = $db->table('upload_doc');
             $builder->insert($data);
 
-            return redirect()->back()->with('success', 'Document uploaded successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Invalid file or file uploading failed.');
+            session()->setFlashdata('success', 'Document uploaded successfully.');
+            return redirect()->to('uploadmedia');
+            session()->setFlashdata('error', 'Invalid file or file upload failed.');
+         
+           return redirect()->to('uploadmedia');
         }
     }    
 
