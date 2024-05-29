@@ -154,7 +154,6 @@ class Home extends BaseController
         }
 
 
-
         public function submitEnquiry()
         {
             $db = \Config\Database::connect();
@@ -189,5 +188,6 @@ class Home extends BaseController
     
                 return redirect()->to('home');
             }
+         
         
     }

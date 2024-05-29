@@ -60,5 +60,6 @@ $routes->post('submitEnquiry', 'Home::submitEnquiry');
 
 $routes->get('shoolstudent', 'Home::shoolstudent');
 $routes->get('abroadstudent', 'Home::abroadstudent');
-$routes->get('career', 'Home::career');
 
+$routes->get('career', 'AdminController::showCareerForm');
+$routes->post('career', 'AdminController::saveCareerForm');
