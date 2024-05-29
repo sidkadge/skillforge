@@ -308,6 +308,32 @@ public function deletefacultyskills()
     return redirect()->back();
 }
 
+public function studentprofile()
+{
+    $model = new Admin_Model(); 
+    $wherecond = array('role' => 'student');
+    $data['studentlist'] = $model->getalldata('tbl_register', $wherecond);
+    // print_r($data['studentlist']);die;
+    echo view('Admin/studentprofile',$data);
+}
+public function facultyprofile()
+{
+    $model = new Admin_Model(); 
+    $wherecond = array('role' => 'Faculty');
+    $data['facultylist'] = $model->getalldata('tbl_register', $wherecond);
+    // print_r($data['studentlist']);die;
+    echo view('Admin/facultyprofile',$data);
+}
+public function facultyuplodedmedia()
+{
+    echo view('Admin/facultyuplodedmedia');
+}
+public function studentuplodedmedia()
+{
+    echo view('Admin/studentuplodedmedia');
+}
+
+
 
 //   these all for faculty 
 
@@ -425,6 +451,7 @@ public function Facultydashboard()
         }
     }  
   
+
 
 
 
