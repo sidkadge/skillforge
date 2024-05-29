@@ -58,5 +58,9 @@ $routes->post('userregister', 'Home::userregister');
 $routes->post('userlogin', 'Home::userlogin');
 $routes->post('submitEnquiry', 'Home::submitEnquiry');
 
+$routes->get('studentprofile', 'AdminController::studentprofile');
+$routes->get('facultyprofile', 'AdminController::facultyprofile');
+$routes->get('facultyuplodedmedia', 'AdminController::facultyuplodedmedia');
+$routes->get('studentuplodedmedia', 'AdminController::studentuplodedmedia');
 
 
