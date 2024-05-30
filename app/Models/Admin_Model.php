@@ -44,4 +44,17 @@ class Admin_Model extends Model
             return false;
         }
     }
+
+    public function getasignfacultyid($student_id)
+    {
+        $query = $this->select('assign_teacher_id')
+                      ->where('r_id', $student_id)
+                      ->get();
+
+        if ($query->getNumRows() > 0) {
+            return $query->getRow()->assign_teacher_id;
+        } else {
+            return null;
+        }
+    }
 }

@@ -223,7 +223,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>Add_user">
+                                            <a href="<?=base_url(); ?>Facultyimages">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Images</span>
@@ -232,7 +232,7 @@
                                         </li>
 
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>user-list">
+                                            <a href="<?= base_url()?>Faculty_videos">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Videos</span>
@@ -241,9 +241,10 @@
                                         </li>
 
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>add_workinghour">
+                                            <a href="<?=base_url(); ?>Facultydoc">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Document</span>
+                                                <span class="pcoded-mtext" 
+                                                    data-i18n="nav.basic-components.alert">Document</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
