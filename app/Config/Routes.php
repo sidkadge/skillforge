@@ -55,6 +55,10 @@ $routes->get('Faculty_uploadmedia', 'AdminController::Faculty_uploadmedia');
 $routes->post('tbl_upload_image', 'AdminController::tbl_upload_image');
 $routes->post('tbl_upload_video', 'AdminController::tbl_upload_video');
 $routes->post('tbl_upload_doc', 'AdminController::tbl_upload_doc');
+$routes->get('Faculty_videos', 'AdminController::Faculty_videos');
+$routes->get('Facultyimages', 'AdminController::Facultyimages');
+$routes->get('Facultydoc', 'AdminController::Facultydoc');
+
 
 $routes->post('contactus', 'Home::contactus');
 
