@@ -53,6 +53,7 @@ class Admin_Model extends Model
             return false;
         }
     }
+
     public function get_media_with_student_names($table, $wherecond)
     {
         return $this->db->table($table)
@@ -70,5 +71,19 @@ class Admin_Model extends Model
                         ->where($wherecond)
                         ->get()
                         ->getResultArray();
+
+
+    public function getasignfacultyid($student_id)
+    {
+        $query = $this->select('assign_teacher_id')
+                      ->where('r_id', $student_id)
+                      ->get();
+
+        if ($query->getNumRows() > 0) {
+            return $query->getRow()->assign_teacher_id;
+        } else {
+            return null;
+        }
+
     }
 }

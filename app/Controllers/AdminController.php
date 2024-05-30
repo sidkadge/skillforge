@@ -31,7 +31,9 @@ class AdminController extends BaseController
     {
         $db = \Config\Database::connect();
         $this->session = \Config\Services::session();
-        
+        $model = new Admin_Model();
+
+   
         $imageFile = $this->request->getFile('input_image');
 
         if ($imageFile && $imageFile->isValid() && $imageFile->getClientMimeType() && strpos($imageFile->getClientMimeType(), 'image') !== false && !$imageFile->hasMoved()) {
@@ -44,10 +46,13 @@ class AdminController extends BaseController
             }
 
             $student_id = $this->session->get('user_id');
-
+            
+            $faculty_id =$model->getasignfacultyid($student_id);
+            // print_r($faculty_id);die;
             $data = [
                 'image_name' => $imageName,
                 'student_id' => $student_id,
+                'assign_teacher_id'=>$faculty_id,
             ];
 
             $builder = $db->table('upload_img');
@@ -65,7 +70,7 @@ class AdminController extends BaseController
     {       
         $db = \Config\Database::connect();
         $this->session = \Config\Services::session();
-        
+        $model = new Admin_Model();
         $videoFile = $this->request->getFile('input_video');
         // Check if a file was uploaded and if it's a video
         if ($videoFile && $videoFile->isValid() && $videoFile->getClientMimeType() && strpos($videoFile->getClientMimeType(), 'video') !== false && !$videoFile->hasMoved()) {
@@ -78,10 +83,11 @@ class AdminController extends BaseController
             }
     
             $student_id = $this->session->get('user_id');
-   
+            $faculty_id =$model->getasignfacultyid($student_id);
             $data = [
                 'video_name' => $videoName,
                 'student_id' => $student_id,
+                'assign_teacher_id'=>$faculty_id,
             ];
     
             $builder = $db->table('upload_video');
@@ -98,36 +104,43 @@ class AdminController extends BaseController
     public function upload_doc()
     {
         $db = \Config\Database::connect();
-
+    
         $DocFile = $this->request->getFile('input_doc');
-
-        if ($DocFile && $DocFile->isValid() && strpos($DocFile->getClientMimeType(), 'doc') !== false && !$DocFile->hasMoved()) {
+        $model = new Admin_Model();
+        // Define allowed MIME types
+        $allowedMimeTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    
+        if ($DocFile && $DocFile->isValid() && in_array($DocFile->getClientMimeType(), $allowedMimeTypes) && !$DocFile->hasMoved()) {
             $DocName = $DocFile->getRandomName();
-
+    
             try {
                 $DocFile->move(ROOTPATH . 'public/uploads/student/Doc', $DocName);
             } catch (FileException $e) {
                 return redirect()->back()->with('error', 'Failed to upload document');
             }
-
+    
             $session = \Config\Services::session();
             $student_id = $session->get('user_id');
-
+            $faculty_id =$model->getasignfacultyid($student_id);
             $data = [
                 'Doc_name' => $DocName,
                 'student_id' => $student_id,
+                'assign_teacher_id'=>$faculty_id,
             ];
-
+    
             $builder = $db->table('upload_doc');
             $builder->insert($data);
-
+    
             session()->setFlashdata('success', 'Document uploaded successfully.');
             return redirect()->to('uploadmedia');
-            session()->setFlashdata('error', 'Invalid file or file upload failed.');
-         
-           return redirect()->to('uploadmedia');
+        } else {
+            session()->setFlashdata('error', 'Invalid file or file upload failed. Please upload a PDF, DOC, or DOCX file.');
+            return redirect()->back()->withInput(); // Redirect back with input if needed
         }
-    }    
+    }
+    
+    
+    
 
    public function addAbroadclass()
 {
@@ -579,7 +592,58 @@ public function updateApplicationStatus() {
             return redirect()->to('Faculty_uploadmedia');
         }
     }  
-  
+    
+    public function Faculty_videos()
+    {
+        $db = \Config\Database::connect();
+        $this->session = \Config\Services::session();
+        $faculty_id = $this->session->get('user_id');
+
+        // Fetch videos uploaded by students assigned to the logged-in faculty member
+        $builder = $db->table('upload_video');
+        $builder->select('upload_video.*, tbl_register.username as student_name');
+        $builder->join('tbl_register', 'upload_video.student_id = tbl_register.r_id');
+        $builder->where('upload_video.assign_teacher_id', $faculty_id);
+        $query = $builder->get();
+        $data['videos'] = $query->getResult();
+
+        echo view('Faculty/Faculty_videos', $data);
+    }
+
+    public function Facultyimages()
+    {
+        $db = \Config\Database::connect();
+        $this->session = \Config\Services::session();
+
+        $faculty_id = $this->session->get('user_id');
+
+        $builder = $db->table('upload_img');
+        $builder->select('upload_img.*, tbl_register.username as student_name');
+        $builder->join('tbl_register', 'upload_img.student_id = tbl_register.r_id'); // assuming student_id is in upload_img table
+        $builder->where('upload_img.assign_teacher_id', $faculty_id); // ensure assign_teacher_id refers to faculty_id
+        $query = $builder->get();
+        $data['images'] = $query->getResult();
+
+        echo view('Faculty/Facultyimages', $data);
+    }
+
+    public function Facultydoc()
+    {
+        $db = \Config\Database::connect();
+        $this->session = \Config\Services::session();
+
+        $faculty_id = $this->session->get('user_id');
+       
+
+        $builder = $db->table('upload_doc');
+        $builder->select('upload_doc.*, tbl_register.username as student_name');
+        $builder->join('tbl_register', 'upload_doc.student_id = tbl_register.r_id'); // assuming student_id is in upload_img table
+        $builder->where('upload_doc.assign_teacher_id', $faculty_id); // ensure assign_teacher_id refers to faculty_id
+        $query = $builder->get();
+        $data['Doc'] = $query->getResult();
+        // print_r($data['Doc'] );
+        echo view('Faculty/Facultydoc', $data);
+    }
 
 
 
