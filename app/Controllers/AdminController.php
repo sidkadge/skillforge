@@ -324,59 +324,36 @@ public function showCareerForm()
         echo view('career', $data);
     }
     public function saveCareerForm()
-    {
-        // Load the model
-        $model = new Admin_Model();
-    
-        // Retrieve form data
-        $data = [
-            'fullName' => $this->request->getPost('fullName'),
-            'email' => $this->request->getPost('email'),
-            'phone' => $this->request->getPost('phone'),
-            'position' => $this->request->getPost('position'),
-            'skills' => implode(',', $this->request->getPost('skills')),
-            'resume' => $this->request->getFile('resume'), // Note: This should be an object representing the uploaded file
-            'coverLetter' => $this->request->getPost('coverLetter'),
-        ];
-    
-        // Ensure $data['resume'] is an object before proceeding
-        if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
-            // Handle file upload
-            $newName = $data['resume']->getRandomName();
-            $resumePath = 'uploads/faculty_resume' . $newName;
-            
-            // Create directory if it doesn't exist 
-            if (!is_dir(ROOTPATH . 'public/uploads/faculty_resume')) {
-                mkdir(ROOTPATH . 'public/uploads/faculty_resume', 0755, true);
-            }
-    
-            // Move the file to the specified directory
-            $data['resume']->move(ROOTPATH . 'public/uploads/faculty_resume', $newName);
-            
-            // Set the resume path to be saved in the database
-            $data['resume'] = $resumePath;
-        } else {
-            // Handle file upload failure or empty file
-            $data['resume'] = ''; // Set to empty string or handle accordingly
-        }
-    
-        // Ensure column names are all lowercase and match your table structure
-        $dbData = [
-            'fullName' => $data['fullName'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'position' => $data['position'],
-            'skills' => $data['skills'],
-            'resume' => $data['resume'],
-            'coverLetter' => $data['coverLetter'],
-        ];
-    
-        // Save data to the database
-        $model->saveCareerData($dbData);
-    
-        // Redirect or load a success view
-        return redirect()->to(base_url('career'));
+{
+    $model = new Admin_Model();
+    $data = [
+        'fullName' => $this->request->getPost('fullName'),
+        'email' => $this->request->getPost('email'),
+        'phone' => $this->request->getPost('phone'),
+        'position' => $this->request->getPost('position'),
+        'skills' => implode(',', $this->request->getPost('skills')),
+        'resume' => $this->request->getFile('resume'), // Note: This should be an object representing the uploaded file
+        'coverLetter' => $this->request->getPost('coverLetter'),
+    ];
+    if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
+        $newName = $data['resume']->getRandomName();
+        $data['resume']->move(ROOTPATH . 'public/uploads/faculty_resume', $newName);
+        $data['resume'] = $newName; 
+    } else {
+        $data['resume'] = ''; 
     }
+    $dbData = [
+        'full_name' => $data['fullName'],
+        'email' => $data['email'],
+        'phone' => $data['phone'],
+        'position' => $data['position'],
+        'skills' => $data['skills'],
+        'resume' => $data['resume'],
+        'cover_letter' => $data['coverLetter'],
+    ];
+    $model->saveCareerData($dbData);
+    return redirect()->to(base_url('career'));
+}
     
 public function studentprofile()
 {
@@ -396,16 +373,29 @@ public function facultyprofile()
 }
 public function facultyuplodedmedia()
 {
-    echo view('Admin/facultyuplodedmedia');
+    $model = new Admin_Model(); 
+
+    $wherecond = ['is_deleted' => 'N'];
+
+    $data['images'] = $model->get_media_with_faculty_names('tbl_upload_img', $wherecond);
+    $data['videos'] = $model->get_media_with_faculty_names('tbl_upload_video', $wherecond);
+    $data['docs'] = $model->get_media_with_faculty_names('tbl_upload_doc', $wherecond);
+//   print_r($data['docs']);die;
+    echo view('Admin/facultyuplodedmedia',$data);
 }
+
 public function studentuplodedmedia()
 {
-    echo view('Admin/studentuplodedmedia');
+    $model = new Admin_Model(); 
+
+    $wherecond = ['is_deleted' => 'N'];
+
+    $data['images'] = $model->get_media_with_student_names('upload_img', $wherecond);
+    $data['videos'] = $model->get_media_with_student_names('upload_video', $wherecond);
+    $data['docs'] = $model->get_media_with_student_names('upload_doc', $wherecond);
+    // print_r($data['docs']);die;
+    return view('Admin/studentuplodedmedia', $data);
 }
-
-
-
-//   these all for faculty 
 
 public function Facultydashboard()
    {
@@ -418,6 +408,75 @@ public function Facultydashboard()
    {
       echo view('Faculty/Faculty_uploadmedia');
    }
+public function newfacultyapplications()
+{ 
+    $model = new Admin_Model(); 
+    $wherecond = array('approved' => 'N');
+    $data['facultyapplications'] = $model->getalldata('tbl_career_applications', $wherecond);
+    $wherecond = array('approved' => 'A','password_created' =>'N');
+    $data['acceptapplications'] = $model->getalldata('tbl_career_applications', $wherecond);
+    $wherecond = array('approved' => 'P');
+    $data['pendingapplications'] = $model->getalldata('tbl_career_applications', $wherecond);
+    //  print_r($data['facultyapplications']);die;
+    echo view('Admin/newfacultyapplications',$data);
+}
+public function createpassforfaculty()
+{
+    // Get POST data
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('Password');
+    $model = new Admin_Model();
+    $wherecond = array('email' => $email);
+    $data['facultyinfo'] = $model->getalldata('tbl_career_applications', $wherecond);
+
+    if (!empty($data['facultyinfo'])) {
+        $facultyInfo = $data['facultyinfo'][0];
+        $registerData = [
+            'username' => $facultyInfo['full_name'],
+            'email' => $facultyInfo['email'],
+            'password' => $password, 
+            'role' => 'faculty',
+            'phone' => $facultyInfo['phone'],
+        ];
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_register');
+        $insert = $builder->insert($registerData);
+
+        if ($insert) {
+            $update_data = $db->table('tbl_career_applications')->where('id', $facultyInfo['id']);
+            $update_data->update(['password_created' => 'Y']);
+            session()->setFlashdata('success', 'Password created succesfullly.');
+        } else {
+            session()->setFlashdata('error', 'Failed to insert faculty information into the register table.');
+        }
+    } else {
+        session()->setFlashdata('error', 'No faculty information found for the provided email.');
+    }
+
+    return redirect()->to('newfacultyapplications');
+}
+
+public function updateApplicationStatus() {
+    $model = new Admin_Model();
+    $db = \Config\Database::connect();
+
+    $id = $this->request->getPost('id');
+    $status = $this->request->getPost('status');
+    
+    $data = [
+        'approved' => $status
+    ];
+
+    $update_data = $db->table('tbl_career_applications')->where('id', $id);
+    if ($update_data->update($data)) {
+        session()->setFlashdata('success', 'Application status updated successfully.');
+    } else {
+        session()->setFlashdata('error', 'Failed to update application status.');
+    }
+
+    return redirect()->to('newfacultyapplications');
+}
 
    public function tbl_upload_image()
     {

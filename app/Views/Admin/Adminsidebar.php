@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>GURU Able - Free Lite Admin Template </title>
+    <title>SkillForge</title>
    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -356,6 +356,14 @@
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Faculty Uploded Media</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?=base_url(); ?>newfacultyapplications">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext"
+                                                    data-i18n="nav.basic-components.breadcrumbs">New Faculty Applications</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>

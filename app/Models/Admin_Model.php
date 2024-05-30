@@ -53,4 +53,22 @@ class Admin_Model extends Model
             return false;
         }
     }
+    public function get_media_with_student_names($table, $wherecond)
+    {
+        return $this->db->table($table)
+                        ->select("$table.*, tbl_register.username as student_name")
+                        ->join('tbl_register', "$table.student_id = tbl_register.r_id", 'left')
+                        ->where($wherecond)
+                        ->get()
+                        ->getResultArray();
+    }
+    public function get_media_with_faculty_names($table, $wherecond)
+    {
+        return $this->db->table($table)
+                        ->select("$table.*, tbl_register.username as student_name")
+                        ->join('tbl_register', "$table.faculty_id = tbl_register.r_id", 'left')
+                        ->where($wherecond)
+                        ->get()
+                        ->getResultArray();
+    }
 }
