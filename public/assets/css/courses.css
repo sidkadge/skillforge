@@ -1,0 +1,49 @@
+.custom-list {
+    list-style-type: none;
+    /* Remove default list styling */
+    padding: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px;
+    /* Add space for custom bullet */
+    margin-bottom: 10px;
+    /* Add some space between list items */
+    padding-top: 20px;
+}
+
+.custom-list li::before {
+    content: "\2022";
+    /* Unicode for bullet point */
+    position: absolute;
+    left: 0;
+    color: black;
+    /* Black color for bullet point */
+}
+
+.basic {
+    display: inline;
+    margin-left: 5px;
+    /* Optional: Add spacing between checkbox and label */
+}
+
+.bg-gray-100 {
+    background-color: #b2b6e336;
+}
+.bordered-table {
+    border: 2px solid #000;
+    border-collapse: collapse;
+}
+
+.bordered-table th,
+.bordered-table td {
+    border: 1px solid #000;
+    padding: 8px;
+}
+.collapse{
+    padding-top: 20px;
+}
+.btn-primary{
+    margin-bottom: 20px;
+}

@@ -21,6 +21,7 @@
         width: 100%;
         padding: 8px;
         box-sizing: border-box;
+        transition: all 0.3s ease-in-out; /* Add transition to all input elements */
     }
     .form-group button {
         padding: 10px 15px;
@@ -29,6 +30,7 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
+        transition: background-color 0.3s ease-in-out; /* Add transition to button background color */
     }
     .form-group button:hover {
         background-color: #218838;
@@ -39,6 +41,39 @@
     }
     .form-group .checkbox-group label {
         margin-right: 10px;
+    }
+
+    /* Animation for submit button */
+    .form-group button {
+        animation: fadeIn 0.5s ease-in-out; /* Add animation to the button */
+    }
+
+    /* Animation for input elements */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        animation: slideInRight 0.5s ease-in-out; /* Add animation to input elements */
+    }
+
+    /* Define keyframes for animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
 </style>
 

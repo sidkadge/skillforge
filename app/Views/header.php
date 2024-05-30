@@ -137,7 +137,7 @@
                                                     href="<?php echo base_url('abroadstudent') ?>">Abroad Student</a>
                                             </li>
                                             <li class="rd-dropdown-item"><a class="rd-dropdown-link"
-                                                    href="<?php echo base_url('shoolstudent') ?>">School Student</a>
+                                                    href="<?php echo base_url('schoolstudent') ?>">School Student</a>
                                             </li>
 
                                         </ul>
@@ -150,6 +150,9 @@
                                     </li>
                                     <li class="rd-nav-item"><a class="rd-nav-link"
                                             href="<?php echo base_url('register') ?>">Register</a>
+                                    </li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link"
+                                            href="<?php echo base_url('cart') ?>">Cart</a>
                                     </li>
                                     <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('login') ?>">login</a>
                     </li> -->
@@ -172,6 +175,32 @@
             });
         });
         </script>
+         <script>
+        function addToCart(course, fee) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ course, fee });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart');
+        }
+
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+
+            cart.forEach(item => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.course}</td>
+                    <td>${item.fee}</td>
+                `;
+                cartItems.appendChild(row);
+            });
+        }
+
+        // Load cart items when the page loads
+        window.onload = displayCart;
+    </script>
     </div>
 </body>
 
