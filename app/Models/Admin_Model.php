@@ -71,7 +71,7 @@ class Admin_Model extends Model
                         ->where($wherecond)
                         ->get()
                         ->getResultArray();
-
+    }
 
     public function getasignfacultyid($student_id)
     {
