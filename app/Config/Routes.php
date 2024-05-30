@@ -57,7 +57,7 @@ $routes->post('tbl_upload_video', 'AdminController::tbl_upload_video');
 $routes->post('tbl_upload_doc', 'AdminController::tbl_upload_doc');
 
 $routes->post('contactus', 'Home::contactus');
-
+$routes->get('cart', 'Home::cart');
 $routes->post('userregister', 'Home::userregister');
 $routes->post('userlogin', 'Home::userlogin');
 $routes->post('submitEnquiry', 'Home::submitEnquiry');
@@ -69,7 +69,7 @@ $routes->get('facultyuplodedmedia', 'AdminController::facultyuplodedmedia');
 $routes->get('studentuplodedmedia', 'AdminController::studentuplodedmedia');
 
 
-$routes->get('shoolstudent', 'Home::shoolstudent');
+$routes->get('schoolstudent', 'Home::schoolstudent');
 $routes->get('abroadstudent', 'Home::abroadstudent');
 
 
