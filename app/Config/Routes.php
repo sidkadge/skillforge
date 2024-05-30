@@ -71,6 +71,9 @@ $routes->get('studentprofile', 'AdminController::studentprofile');
 $routes->get('facultyprofile', 'AdminController::facultyprofile');
 $routes->get('facultyuplodedmedia', 'AdminController::facultyuplodedmedia');
 $routes->get('studentuplodedmedia', 'AdminController::studentuplodedmedia');
+$routes->get('newfacultyapplications', 'AdminController::newfacultyapplications');
+$routes->post('updateApplicationStatus', 'AdminController::updateApplicationStatus');
+$routes->post('createpassforfaculty', 'AdminController::createpassforfaculty');
 
 
 $routes->get('shoolstudent', 'Home::shoolstudent');
