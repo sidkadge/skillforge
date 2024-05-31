@@ -1,5 +1,6 @@
 <?php include('header.php') ?>
 <style>
+
   body{ background: linear-gradient(98deg, rgba(129, 235, 249, 1) 0%, rgba(194, 227, 184, 1) 35%, rgba(237, 222, 142, 1) 100%);
 }
 
@@ -49,6 +50,83 @@
 .form-group .checkbox-group input[type="checkbox"] {
     margin-right: 5px;
 }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #e1d6d6;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out; /* Add transition to all input elements */
+    }
+    .form-group button {
+        padding: 10px 15px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out; /* Add transition to button background color */
+    }
+    .form-group button:hover {
+        background-color: #218838;
+    }
+    .form-group .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .form-group .checkbox-group label {
+        margin-right: 10px;
+    }
+
+    /* Animation for submit button */
+    .form-group button {
+        animation: fadeIn 0.5s ease-in-out; /* Add animation to the button */
+    }
+
+    /* Animation for input elements */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        animation: slideInRight 0.5s ease-in-out; /* Add animation to input elements */
+    }
+
+    /* Define keyframes for animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
 </style>
 
 <div class="container">

@@ -33,13 +33,17 @@ class Home extends BaseController
     {
          echo view('abroadstudent');
     }
-    public function shoolstudent()
+    public function schoolstudent()
     {
-         echo view('shoolstudent');
+         echo view('schoolstudent');
     }
     public function career()
     {
          echo view('career');
+    }
+    public function cart()
+    {
+         echo view('cart');
     }
     
     public function contactus()

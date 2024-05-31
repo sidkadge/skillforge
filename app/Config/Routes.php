@@ -62,7 +62,7 @@ $routes->get('Facultydoc', 'AdminController::Facultydoc');
 
 
 $routes->post('contactus', 'Home::contactus');
-
+$routes->get('cart', 'Home::cart');
 $routes->post('userregister', 'Home::userregister');
 $routes->post('userlogin', 'Home::userlogin');
 $routes->post('submitEnquiry', 'Home::submitEnquiry');
@@ -77,10 +77,12 @@ $routes->post('updateApplicationStatus', 'AdminController::updateApplicationStat
 $routes->post('createpassforfaculty', 'AdminController::createpassforfaculty');
 
 
-$routes->get('shoolstudent', 'Home::shoolstudent');
+$routes->get('schoolstudent', 'Home::schoolstudent');
 $routes->get('abroadstudent', 'Home::abroadstudent');
 
 
 $routes->get('career', 'AdminController::showCareerForm');
 $routes->post('career', 'AdminController::saveCareerForm');
 
+$routes->post('cart/add', 'CartController::add');
+$routes->get('cart_view', 'CartController::viewCart');
