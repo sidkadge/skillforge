@@ -49,6 +49,7 @@ $routes->get('uploadmedia', 'AdminController::uplodefiles');
 $routes->post('upload_img', 'AdminController::upload_img');
 $routes->post('upload_video', 'AdminController::upload_video');
 $routes->post('upload_doc', 'AdminController::upload_doc');
+$routes->get('logout', 'AdminController::logout');
 
 $routes->get('Facultydashboard', 'AdminController::Facultydashboard');
 $routes->get('Faculty_uploadmedia', 'AdminController::Faculty_uploadmedia');
