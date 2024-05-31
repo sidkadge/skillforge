@@ -83,3 +83,5 @@ $routes->get('abroadstudent', 'Home::abroadstudent');
 $routes->get('career', 'AdminController::showCareerForm');
 $routes->post('career', 'AdminController::saveCareerForm');
 
+$routes->post('cart/add', 'CartController::add');
+$routes->get('cart_view', 'CartController::viewCart');
