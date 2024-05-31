@@ -61,26 +61,26 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                     foreach ($faculty_skills as $data) { ?>
                                                 <tr>
                                                     <td><?= $i; ?></td>
-                                                    <td><?= $data->facultyskill	; ?></td>
+                                                    <td><?= $data['facultyskill'];?></td>
                                                     <td>
                                                         <div class="d-inline-block">
                                                             <!-- Use d-inline-block to display buttons in the same line -->
                                                             <!-- Edit Button -->
-                                                            <a href="<?= base_url('addfacultyskills/' . $data->id) ?>"
+                                                            <a href="<?= base_url('addfacultyskills/' . $data['id']) ?>"
                                                                 class="btn btn-mat btn-warning" role="button">
                                                                 </i>Edit
                                                             </a>
 
                                                             <!-- Delete Form -->
-                                                            <form id="deletefacultyskills<?= $data->id ?>"
+                                                            <form id="deletefacultyskills<?= $data['id']?>"
                                                                 action="<?= base_url('deletefacultyskills') ?>"
                                                                 method="post" style="display: inline;">
                                                                 <input type="hidden" name="id"
-                                                                    value="<?= $data->id ?>">
+                                                                    value="<?= $data['id'] ?>">
                                                                 <input type="hidden" name="table_name"
                                                                     value="tbl_faculty_skills">
                                                                 <button type="button" class="btn btn-mat btn-danger"
-                                                                    onclick="confirmDelete(<?= $data->id ?>)">Delete</button>
+                                                                    onclick="confirmDelete(<?= $data['id'] ?>)">Delete</button>
                                                             </form>
                                                         </div>
                                                     </td>

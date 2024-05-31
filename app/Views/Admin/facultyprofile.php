@@ -16,7 +16,7 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                             <div class="page-header-title">
                                 <i class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
                                 <div class="d-inline">
-                                    <h4>Student Profile</h4>
+                                    <h4>Faculty Profile</h4>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                     </li>
                                     <li class="breadcrumb-item"><a href="#!">Pages</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="">Student Profile</a></li>
+                                    <li class="breadcrumb-item"><a href="">Faculty Profile</a></li>
                                     </li>
                                 </ul>
                             </div>
