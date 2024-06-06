@@ -45,6 +45,10 @@ class Home extends BaseController
     {
          echo view('cart');
     }
+    public function checkout()
+    {
+         echo view('checkout');
+    }
     
     public function contactus()
     {

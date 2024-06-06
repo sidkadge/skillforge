@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 <link rel="stylesheet" href="<?= base_url('public/assets/css/about.css') ?>">
 <link rel="stylesheet" href="<?= base_url('public/assets/css/courses.css') ?>">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
@@ -47,12 +48,12 @@
         text-align: center;
     }
 
-    .cart-table .delete-item {
+    .cart-table .remove-item {
         cursor: pointer;
         color: red;
     }
-    .but{
-        margin-top:30px;
+    .but {
+        margin-top: 30px;
     }
 </style>
 
@@ -78,7 +79,7 @@
                             <td><?= esc($item['session']) ?></td>
                             <td><?= esc($item['duration']) ?></td>
                             <td>
-                                <i class="fas fa-trash delete-item"></i>
+                                <i class="fas fa-trash remove-item"></i>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -91,15 +92,28 @@
         </table>
     </div>
     <div class="text-center">
-        <button class="btn btn-primary but">Checkout</button>
+    <a href="<?= base_url('checkout') ?>" class="btn btn-primary but">Checkout</a>
     </div>
-</div>
+   
+</div>  
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.delete-item').forEach(function (btn) {
+        const removedItems = JSON.parse(localStorage.getItem('removedCartItems')) || [];
+
+        document.querySelectorAll('#cart-items tr').forEach(function (row) {
+            const itemId = row.getAttribute('data-id');
+            if (removedItems.includes(itemId)) {
+                row.remove();
+            }
+        });
+
+        document.querySelectorAll('.remove-item').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const row = btn.closest('tr');
+                const itemId = row.getAttribute('data-id');
+                removedItems.push(itemId);
+                localStorage.setItem('removedCartItems', JSON.stringify(removedItems));
                 row.remove();
                 updateCartCount();
             });

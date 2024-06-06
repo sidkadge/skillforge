@@ -6,37 +6,53 @@
 <?php include('header.php'); ?>
 
 <script>
-function addToCart(courseName, price, session, duration) {
-    console.log('Add to Cart clicked');
-    const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
-    if (!csrfTokenMeta) {
-        console.error('CSRF token meta tag not found');
-        alert('Error: CSRF token not found');
-        return;
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to get the cart count from the server
+    function fetchCartCount() {
+        axios.get('<?= base_url('cart/count') ?>')
+            .then(response => {
+                document.getElementById('cart-count').textContent = response.data.count;
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
     }
 
-    const csrfToken = csrfTokenMeta.getAttribute('content');
+    fetchCartCount(); // Fetch cart count on page load
 
-    axios.post('<?= base_url('cart/add') ?>', {
-            course_name: courseName,
-            price: price,
-            session: session,
-            duration: duration
-        }, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': csrfToken
-            }
-        })
-        .then(response => {
-            console.log(response.data);
-            alert(response.data.success);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error adding course to cart');
-        });
-}
+    window.addToCart = function(courseName, price, session, duration) {
+        console.log('Add to Cart clicked');
+        const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+        if (!csrfTokenMeta) {
+            console.error('CSRF token meta tag not found');
+            alert('Error: CSRF token not found');
+            return;
+        }
+
+        const csrfToken = csrfTokenMeta.getAttribute('content');
+
+        axios.post('<?= base_url('cart/add') ?>', {
+                course_name: courseName,
+                price: price,
+                session: session,
+                duration: duration
+            }, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+            .then(response => {
+                console.log(response.data);
+                alert(response.data.success);
+                fetchCartCount(); // Update cart count after adding item
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding course to cart');
+            });
+    }
+});
 </script>
 
 <div class="breadcrumbs-custom">
@@ -242,5 +258,23 @@ function addToCart(courseName, price, session, duration) {
     </div>
 </section>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.delete-item').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const row = btn.closest('tr');
+                row.remove();
+                updateCartCount();
+            });
+        });
 
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.querySelectorAll('#cart-items tr');
+            cartCount.textContent = cartItems.length;
+        }
+
+        updateCartCount();
+    });
+</script>
 <?php include('footer.php'); ?>
