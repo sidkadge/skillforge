@@ -78,23 +78,18 @@
 <section class="section section-lg bg-gray-100">
     <div class="row row-50 justify-content-center justify-content-lg-between">
         <div class="col-12 d-flex justify-content-between align-items-center">
-            <h3 class="h-custom-1 f1">A Few Words About Extra Curricular Activities</h3>
+            <h3 class="h-custom-1 f1">Beyond the Classroom: The Value of Extracurricular Activities</h3>
             <a class="button button-animated" id="openEnquiryForm" href="#"><span>Enquiry</span></a>
         </div>
         <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
-            <p>
-                Extracurricular activities are vital for the comprehensive development of children, particularly
-                within the Indian educational system. These activities, which include sports, arts, music, drama,
-                and various clubs, offer numerous benefits that extend beyond academic learning. They help children
-                develop essential social skills by interacting with peers in diverse settings, promoting teamwork,
-                communication, and empathy. Engaging in activities like chess or music can enhance cognitive
-                functions, leading to better academic performance. Additionally, physical activities contribute to
-                overall health, combating sedentary lifestyles and associated health issues. Creative pursuits
-                foster innovation and critical thinking, essential skills in today's world.
-            </p>
-            <a class="button button-primary-gradient" href="#"><span>read more</span></a>
-        </div>
-
+        <p>
+            "<em><strong>Extracurricular</strong></em>"...!<br>
+            It’s all in the name. <strong>Extracurricular</strong> refers to acts done outside of the curriculum that is beneficial to a child’s education. Extracurricular activities are simply put, activities you do outside of class. <br>
+            Extracurricular activities play a crucial role in the comprehensive development of children. They provide opportunities for learning and growth that go beyond the traditional classroom setting. <br> Children can develop essential life skills, discover their passions, build strong social connections, and prepare for future academic and career success. <br>
+            We are providing a <em><strong>variety of programs</strong></em> that cater to diverse student interests and talents as well as we are providing activities to enhance creativity, self-expression, cultural awareness and support mental well-being and stress management among students.
+        </p>
+        <a class="button button-primary-gradient" href="#"><span>read more</span></a>
+    </div>
         <div class="col-xl-5 wow fadeIn" data-wow-delay=".4s">
             <div class="flip-container">
                 <div class="flipper">
@@ -109,6 +104,50 @@
         </div>
     </div>
 </section>
+
+<section class="section section-lg" style="background: linear-gradient(to left, 
+#dfe9ec, #97c7d6, #7cd6f1, #40a4c1); min-height: 550px;">
+    <div class="row row-50 justify-content-center justify-content-lg-between">
+        <div class="col-xl-5 wow fadeIn" data-wow-delay=".4s">
+            <div class="flip-container">
+                <a class="button button-animated" id="openEnquiryForm" href="#" style="margin-left: 15rem; margin-top: 2rem;"><span>Enquiry</span></a>
+                <div class="flipper">
+                    <div class="front">
+                        <img class="img-rounded" src="public/assets/images/abroad_students.jpg" alt="Front Image"style="margin-top: 3rem;">
+                    </div>
+                    <div class="back">
+                        <img class="img-rounded" src="public/assets/images/abroad_students.jpg" alt="Back Image"style="margin-top: 3rem;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
+            <h3 class="h-custom-1 f1" style="margin-top: 2rem;">Enriching International Experiences with Extracurricular Involvement</h3>
+            <p>
+                In an unfamiliar social environment <strong><em>abroad</em></strong>, there are significant differences compared to our home country. Adjusting to these differences is essential for all students studying abroad. While in our country, services such as fitters, electricians, and plumbers are readily available, in other countries, they may come at a high cost. <br>Therefore, our organization believes in equipping students with essential life skills from an early age to prepare them for such situations. By teaching these skills and encouraging <strong><em>precautionary measures</em></strong>, we aim to ensure that our students can navigate challenges effectively while studying and living abroad. <br>These activities not only enhance students' social and interpersonal skills but also <strong><em>broaden their perspectives </em></strong> and help them integrate into diverse communities abroad. 
+            </p>
+            <a class="button button-primary-gradient" href="#"><span>read more</span></a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .custom-img {
+        width: 40rem; 
+        height: auto;
+        margin-top:-10rem;
+        margin-left:-5rem;
+    }
+    
+    .custom-paragraph {
+        line-height: 1.6; 
+        padding: 15px;
+        font-size: 16px;
+    }
+</style>
+
+
 <div id="enquiryPopup" class="popup">
     <div class="popup-content">
         <span class="close">&times;</span>
@@ -169,7 +208,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Mud Crafting</a></h4>
@@ -189,7 +228,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Gardening</a></h4>
@@ -209,7 +248,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Animal Caring</a></h4>
@@ -229,7 +268,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Painting</a></h4>
@@ -249,7 +288,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Health Wellness</a></h4>
@@ -269,7 +308,7 @@
                     <div class="post-minimal-meta">
                         <ul class="list-inline">
                             <li class="list-inline-item">Teacher: </li>
-                            <li class="list-inline-item"><a href="#">Siddesh</a></li>
+                            <li class="list-inline-item"><a href="#">Siddhesh</a></li>
                         </ul>
                     </div>
                     <h4 class="post-minimal-title"><a href="#">Swimming</a></h4>

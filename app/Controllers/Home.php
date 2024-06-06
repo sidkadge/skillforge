@@ -82,19 +82,43 @@ class Home extends BaseController
           $db= \Config\Database::connect();
         //   print_r($_POST);die;
 
-          $username = $this->request->getPost('username');
-          $email = $this->request->getPost('email');
-          $password = $this->request->getPost('password');
-
-          $data = [
-               'username'=> $username,
-               'email'=> $email,
-               'role' =>'student',
-               'password'=> $password
-          ];
-
+        $username = $this->request->getPost('username');
+        $age = $this->request->getPost('age');
+        $gender = $this->request->getPost('gender');
+        $email = $this->request->getPost('email');
+        $mobile = $this->request->getPost('mobile');
+        $visitcountry = $this->request->getPost('visitcountry');
+        $school_grade = $this->request->getPost('school_grade');
+        $schoolname = $this->request->getPost('schoolname');
+        $selectedLanguages = $this->request->getPost('selectedLanguages');
+        $state = $this->request->getPost('state');
+        $city = $this->request->getPost('city');
+        $area = $this->request->getPost('area');
+        $password = $this->request->getPost('password');
+        $studentType = $this->request->getPost('student_type'); 
+    
+        $data = [
+            'username' => $username,
+            'age' => $age,
+            'gender' => $gender,
+            'email' => $email,
+            'phone' => $mobile,
+            'visit_country' => $visitcountry,
+            'school_grade' => $school_grade,
+            'school_name' => $schoolname,
+            'language_known' => $selectedLanguages,
+            'state' => $state,
+            'city' => $city,
+            'area' => $area,
+            'role' => 'student',
+            'student_type' => $studentType, 
+            'password' => $password
+        ];
           $builder = $db->table('tbl_register');
           $builder->insert($data);
+
+
+          return redirect()->to(base_url('/'));
 
           return redirect()->to(base_url('checkout'));
 
@@ -114,12 +138,82 @@ class Home extends BaseController
         
         
 
+
+        public function internal_register()
+        {
+            $db = \Config\Database::connect();
+            
+            $username = $this->request->getPost('username');
+            $parentname = $this->request->getPost('parentname');
+            $email = $this->request->getPost('email');
+            $mobile = $this->request->getPost('mobile');
+            $age = $this->request->getPost('age');
+            $school_grade = $this->request->getPost('school_grade');
+            $gender = $this->request->getPost('gender');
+            $schoolname = $this->request->getPost('schoolname');
+            $selectedLanguages = $this->request->getPost('selectedLanguages');
+            $state = $this->request->getPost('state');
+            $city = $this->request->getPost('city');
+            $area = $this->request->getPost('area');
+            $password = $this->request->getPost('password');
+            $studentType = $this->request->getPost('student_type');
+
+            $data = [
+                'username' => $username,
+                'parentname' => $parentname,
+                'email' => $email,
+                'phone' => $mobile,
+                'age' => $age,
+                'school_grade' => $school_grade,
+                'gender' => $gender,
+                'school_name' => $schoolname,
+                'language_known' => $selectedLanguages,
+                'state' => $state,
+                'city' => $city,
+                'area' => $area,
+                'role' => 'student',
+                'student_type' => $studentType,
+                'password' => $password
+            ];
+
+            $builder = $db->table('tbl_register');
+
+            if ($builder->insert($data)) {
+                session()->setFlashdata('success', 'Data uploaded successfully.');
+            } else {
+                session()->setFlashdata('error', 'Data could not be uploaded successfully.');
+            }
+
+            return redirect()->to(base_url('/'));
+        }
+
+
+        
+        // public function userlogin()
+        // {
+        //     $model = new Admin_Model();
+        //     $where = [
+        //         'email' => $this->request->getVar('email'),
+        //         'password' => $this->request->getVar('password')      
+        //     ];
+        //     $result = $model->checkCredentials($where);
+        //     // print_r($result);die;
+        //     if ($result != '') {
+        //         session()->set('user_id', $result['r_id']);
+        //         return redirect()->to('Admindasboard');
+        //     } else {
+        //         session()->setFlashdata('error', 'Invalid credentials');
+        //         return redirect()->to(base_url('/')); 
+        //     }
+        // }
+
         protected function isLoggedIn()
     {
         return session()->has('user_id');
     }
    
      
+
         public function userlogin()
 {
     $model = new Admin_Model();
@@ -185,7 +279,7 @@ class Home extends BaseController
                 $schoolName = $this->request->getPost('schoolName');
                 $age = $this->request->getPost('age');
                 $areaOfResidence = $this->request->getPost('areaOfResidence');
-    
+                
                 $data = [
                     'student_name' => $studentName,
                     'parents_name' => $parentsName,
@@ -198,12 +292,15 @@ class Home extends BaseController
                     'age' => $age,
                     'area_of_residence' => $areaOfResidence
                 ];
-   // print_r($_POST);die;
+            // print_r($_POST);die;
                 $builder = $db->table('tbl_enquiry');
                 $builder->insert($data);
     
                 return redirect()->to('home');
             }
-         
-        
+
+            public function School_register()
+            {
+                echo view('School_register');
+            }
     }

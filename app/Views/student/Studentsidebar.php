@@ -196,7 +196,7 @@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Dashboard</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
-                                    <a href="<?php echo base_url() ?>admin_dashboard">
+                                    <a href="<?php echo base_url() ?>studentdashboard">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
@@ -226,7 +226,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>Add_user">
+                                            <a href="<?=base_url(); ?>Studentimages">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Images</span>
@@ -235,7 +235,7 @@
                                         </li>
 
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>user-list">
+                                            <a href="<?=base_url(); ?>Studentvideos">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Videos</span>
@@ -244,9 +244,10 @@
                                         </li>
 
                                         <li class=" ">
-                                            <a href="<?=base_url(); ?>add_workinghour">
+                                            <a href="<?=base_url(); ?>Studentdoc">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Document</span>
+                                                <span class="pcoded-mtext" 
+                                                    data-i18n="nav.basic-components.alert">Document</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
