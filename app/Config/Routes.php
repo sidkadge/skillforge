@@ -11,6 +11,8 @@ $routes->get('about', 'Home::about');
 $routes->get('our_courses', 'Home::our_courses');
 $routes->get('contact_us', 'Home::contact_us');
 $routes->get('register', 'Home::register');
+$routes->get('School_register', 'Home::School_register');
+
 
 $routes->get('login', 'Home::login');
 $routes->get('Admindasboard', 'AdminController::Admindasboard');
@@ -49,6 +51,10 @@ $routes->get('uploadmedia', 'AdminController::uplodefiles');
 $routes->post('upload_img', 'AdminController::upload_img');
 $routes->post('upload_video', 'AdminController::upload_video');
 $routes->post('upload_doc', 'AdminController::upload_doc');
+$routes->get('Studentimages', 'AdminController::Studentimages');
+$routes->get('Studentvideos', 'AdminController::Studentvideos');
+$routes->get('Studentdoc', 'AdminController::Studentdoc');
+
 
 $routes->get('Facultydashboard', 'AdminController::Facultydashboard');
 $routes->get('Faculty_uploadmedia', 'AdminController::Faculty_uploadmedia');
@@ -63,6 +69,7 @@ $routes->get('Facultydoc', 'AdminController::Facultydoc');
 $routes->post('contactus', 'Home::contactus');
 
 $routes->post('userregister', 'Home::userregister');
+$routes->post('internal_register', 'Home::internal_register');
 $routes->post('userlogin', 'Home::userlogin');
 $routes->post('submitEnquiry', 'Home::submitEnquiry');
 

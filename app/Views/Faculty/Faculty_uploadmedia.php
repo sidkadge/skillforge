@@ -41,7 +41,17 @@ include __DIR__.'/../Faculty/Facultysidebar.php';
                                             <form action="<?php echo base_url() ?>tbl_upload_image" method="post" enctype="multipart/form-data">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Images</h5>
-                                                    <input type="file" name="tbl_upload_image" class="form-control-file mb-2">
+                                                    <!-- Dropdown for student selection -->
+                                                    <div class="form-group">
+                                                        <label for="student_id">Select Student</label>
+                                                        <select name="student_id" id="student_id" class="form-control" required>
+                                                            <option value="">Select</option>
+                                                            <?php foreach ($facultylist as $student): ?>
+                                                                <option value="<?php echo $student['r_id']; ?>"><?php echo $student['username']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                    <input type="file" name="tbl_upload_image" class="form-control-file mb-2" required>
                                                     <span>Please upload images from here.</span>
                                                     <button type="submit" class="btn btn-primary mt-2">Upload</button>
                                                 </div>
@@ -54,7 +64,17 @@ include __DIR__.'/../Faculty/Facultysidebar.php';
                                                 <form action="<?php echo base_url() ?>tbl_upload_video" method="post" enctype="multipart/form-data">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Video</h5>
-                                                        <input type="file" name="tbl_upload_video" class="form-control-file mb-2" accept="video/*">
+                                                        <!-- Dropdown for student selection -->
+                                                        <div class="form-group">
+                                                            <label for="student_id">Select Student</label>
+                                                            <select name="student_id" id="student_id" class="form-control" required>
+                                                                <option value="">Select</option>
+                                                                <?php foreach ($facultylist as $student): ?>
+                                                                    <option value="<?php echo $student['r_id']; ?>"><?php echo $student['username']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
+                                                        <input type="file" name="tbl_upload_video" class="form-control-file mb-2" accept="video/*" required>
                                                         <span>Please upload videos from here.</span>
                                                         <button type="submit" class="btn btn-primary mt-2">Upload</button>
                                                     </div>
@@ -67,7 +87,17 @@ include __DIR__.'/../Faculty/Facultysidebar.php';
                                                 <form action="<?php echo base_url() ?>tbl_upload_doc" method="post" enctype="multipart/form-data">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Document</h5>
-                                                        <input type="file" name="tbl_upload_doc" class="form-control-file mb-2">
+                                                        <!-- Dropdown for student selection -->
+                                                        <div class="form-group">
+                                                            <label for="student_id">Select Student</label>
+                                                            <select name="student_id" id="student_id" class="form-control" required>
+                                                                <option value="">Select</option>
+                                                                <?php foreach ($facultylist as $student): ?>
+                                                                    <option value="<?php echo $student['r_id']; ?>"><?php echo $student['username']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
+                                                        <input type="file" name="tbl_upload_doc" class="form-control-file mb-2" required>
                                                         <span>Please upload documents from here.</span>
                                                         <button type="submit" class="btn btn-primary mt-2">Upload</button>
                                                     </div>

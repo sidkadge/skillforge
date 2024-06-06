@@ -139,8 +139,83 @@ class AdminController extends BaseController
         }
     }
     
-    
-    
+    public function Studentimages()
+{
+    $db = \Config\Database::connect();
+    $this->session = \Config\Services::session();
+    $model = new Admin_Model();
+    $student_id = $this->session->get('user_id');
+    $faculty_id = $model->getasignfacultyid($student_id);
+    $wherecond = array('student_id' => $student_id, 'is_deleted' => 'N');
+    $data['facultyuplodedimg'] = $model->getalldata('tbl_upload_img', $wherecond);
+    $builder = $db->table('tbl_register');
+    $builder->select('username'); 
+    $builder->where('r_id', $student_id);
+    $student = $builder->get()->getRowArray();
+    if ($student) {
+        $student_name = $student['username'];
+    } else {
+        $student_name = 'Unknown';
+    }
+    foreach ($data['facultyuplodedimg'] as &$img) {
+        $img['student_name'] = $student_name;
+    }
+    // echo '<pre>'; print_r($data['facultyuplodedimg']); die;
+    echo view('student/Studentimages', $data);
+}
+
+public function Studentvideos()
+{
+    $db = \Config\Database::connect();
+    $this->session = \Config\Services::session();
+    $model = new Admin_Model();
+    $student_id = $this->session->get('user_id');
+    $faculty_id = $model->getasignfacultyid($student_id);
+    $wherecond = array('student_id' => $student_id, 'is_deleted' => 'N');
+    $data['facultyuplodedimg'] = $model->getalldata('tbl_upload_video', $wherecond);
+    $builder = $db->table('tbl_register');
+    $builder->select('username'); 
+    $builder->where('r_id', $student_id);
+    $student = $builder->get()->getRowArray();
+    if ($student) {
+        $student_name = $student['username'];
+    } else {
+        $student_name = 'Unknown';
+    }
+    foreach ($data['facultyuplodedimg'] as &$img) {
+        $img['student_name'] = $student_name;
+    }
+    // echo '<pre>'; print_r($data['facultyuplodedimg']); die;
+    echo view('student/Studentvideos', $data);
+}
+ 
+public function Studentdoc()
+{
+    $db = \Config\Database::connect();
+    $this->session = \Config\Services::session();
+    $model = new Admin_Model();
+    $student_id = $this->session->get('user_id');
+    // print_r($_SESSION);die;
+    $faculty_id = $model->getasignfacultyid($student_id);
+    $wherecond = array('student_id' => $student_id, 'is_deleted' => 'N');
+    $data['facultyuplodedimg'] = $model->getalldata('tbl_upload_doc', $wherecond);
+    // echo '<pre>'; print_r($data['facultyuplodedimg']); die;
+
+    $builder = $db->table('tbl_register');
+    $builder->select('username'); 
+    $builder->where('r_id', $student_id);
+    $student = $builder->get()->getRowArray();
+    if ($student) {
+        $student_name = $student['username'];
+    } else {
+        $student_name = 'Unknown';
+    }
+    foreach ($data['facultyuplodedimg'] as &$img) {
+        $img['student_name'] = $student_name;
+    }
+    // echo '<pre>'; print_r($data['facultyuplodedimg']); die;
+    echo view('student/Studentdoc', $data);
+}
 
    public function addAbroadclass()
 {
@@ -419,7 +494,14 @@ public function Facultydashboard()
 
    public function Faculty_uploadmedia()
    {
-      echo view('Faculty/Faculty_uploadmedia');
+        $this->session = \Config\Services::session();
+        $model = new Admin_Model(); 
+        $faculty_id = $this->session->get('user_id');
+        $wherecond = array('assign_teacher_id' => $faculty_id);
+        $data['facultylist'] = $model->getalldata('tbl_register', $wherecond);
+        // print_r($data['facultylist']);die;
+
+      echo view('Faculty/Faculty_uploadmedia',$data);
    }
 public function newfacultyapplications()
 { 
@@ -508,10 +590,13 @@ public function updateApplicationStatus() {
             }
 
             $faculty_id = $this->session->get('user_id');
+            // print_r($_POST);die;
+            $id = $this->request->getPost('student_id');
 
             $data = [
                 'image_name' => $imageName,
                 'faculty_id' => $faculty_id,
+                'student_id' => $id,
             ];
 
             $builder = $db->table('tbl_upload_img');
@@ -543,10 +628,12 @@ public function updateApplicationStatus() {
             }
     
             $faculty_id = $this->session->get('user_id');
-   
+            // print_r($_POST); die;
+            $id = $this->request->getPost('student_id');
             $data = [
                 'video_name' => $videoName,
                 'faculty_id' => $faculty_id,
+                'student_id' => $id,
             ];
     
             $builder = $db->table('tbl_upload_video');
@@ -562,36 +649,43 @@ public function updateApplicationStatus() {
     public function tbl_upload_doc()
     {
         $db = \Config\Database::connect();
-
+    
         $DocFile = $this->request->getFile('tbl_upload_doc');
-
-        if ($DocFile && $DocFile->isValid() && strpos($DocFile->getClientMimeType(), 'doc') !== false && !$DocFile->hasMoved()) {
+    
+        if ($DocFile && $DocFile->isValid() && 
+            (strpos($DocFile->getClientMimeType(), 'doc') !== false || strpos($DocFile->getClientMimeType(), 'pdf') !== false) &&
+            !$DocFile->hasMoved()) {
+    
             $DocName = $DocFile->getRandomName();
-
+    
             try {
                 $DocFile->move(ROOTPATH . 'public/uploads/faculty/Doc', $DocName);
             } catch (FileException $e) {
                 return redirect()->back()->with('error', 'Failed to upload document');
             }
-
+    
             $session = \Config\Services::session();
             $faculty_id = $session->get('user_id');
-
+            $id = $this->request->getPost('student_id');
             $data = [
                 'Doc_name' => $DocName,
                 'faculty_id' => $faculty_id,
+                'student_id' => $id,
             ];
-
+    
             $builder = $db->table('tbl_upload_doc');
             $builder->insert($data);
-
+    
             session()->setFlashdata('success', 'Document uploaded successfully.');
-             return redirect()->to('Faculty_uploadmedia');
-             session()->setFlashdata('error', 'Invalid file or file upload failed.');
-          
+            return redirect()->to('Faculty_uploadmedia');
+        } else {
+            session()->setFlashdata('error', 'Invalid file or file upload failed.');
             return redirect()->to('Faculty_uploadmedia');
         }
-    }  
+    }
+    
+      
+
     
     public function Faculty_videos()
     {
@@ -645,8 +739,7 @@ public function updateApplicationStatus() {
         echo view('Faculty/Facultydoc', $data);
     }
 
-
-
+    
 
 
 }
