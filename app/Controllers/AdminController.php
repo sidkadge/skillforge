@@ -4,20 +4,21 @@ namespace App\Controllers;
 use App\Models\Admin_Model;
 class AdminController extends BaseController
 {
-   public function Admindasboard()
-   {
+    public function Admindasboard()
+    {
+        $session = \Config\Services::session();
+        if (!$session->has('user_id')) {
+            return redirect()->to('/');
+        }
 
-    $session = \Config\Services::session();
-    if (!$session->has('user_id')) {
-        return redirect()->to('/');
+        $model = new Admin_Model();
+        $data['studentList'] = $model->getstudentlist();
+        $data['studentCount'] = !empty($studentList) ? count($studentList) : 0;
+
+     
+
+        echo view('Admin/Admindasboard', $data);
     }
-      $model = new Admin_Model();
-      $data['studentList'] = $model->getstudentlist();
-      $data['studentCount'] = !empty($studentList) ? count($studentList) : 0;
-
-      // print_r($data['studentCount']);die;
-      echo view('Admin/Admindasboard', $data);
-   }
 
 
    public function Studentdashboard()
