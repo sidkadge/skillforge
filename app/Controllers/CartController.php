@@ -36,4 +36,12 @@ class CartController extends Controller
 
         return view('cart_view', $data);
     }
+    public function count()
+{
+    // Example logic to get the cart count
+    $cartCount = $this->cart_model->getCartCount(); // Adjust according to your model logic
+   
+   
+}
+
 }

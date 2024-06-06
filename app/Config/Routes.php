@@ -63,6 +63,7 @@ $routes->get('Facultydoc', 'AdminController::Facultydoc');
 
 $routes->post('contactus', 'Home::contactus');
 $routes->get('cart', 'Home::cart');
+$routes->get('checkout', 'Home::checkout');
 $routes->post('userregister', 'Home::userregister');
 $routes->post('userlogin', 'Home::userlogin');
 $routes->post('submitEnquiry', 'Home::submitEnquiry');
@@ -86,3 +87,4 @@ $routes->post('career', 'AdminController::saveCareerForm');
 
 $routes->post('cart/add', 'CartController::add');
 $routes->get('cart_view', 'CartController::viewCart');
+$routes->get('checkout', 'CartController::viewcheckout');
