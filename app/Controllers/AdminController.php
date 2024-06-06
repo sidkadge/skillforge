@@ -4,15 +4,21 @@ namespace App\Controllers;
 use App\Models\Admin_Model;
 class AdminController extends BaseController
 {
-   public function Admindasboard()
-   {
-      $model = new Admin_Model();
-      $data['studentList'] = $model->getstudentlist();
-      $data['studentCount'] = !empty($studentList) ? count($studentList) : 0;
+    public function Admindasboard()
+    {
+        $session = \Config\Services::session();
+        if (!$session->has('user_id')) {
+            return redirect()->to('/');
+        }
 
-      // print_r($data['studentCount']);die;
-      echo view('Admin/Admindasboard', $data);
-   }
+        $model = new Admin_Model();
+        $data['studentList'] = $model->getstudentlist();
+        $data['studentCount'] = !empty($studentList) ? count($studentList) : 0;
+
+     
+
+        echo view('Admin/Admindasboard', $data);
+    }
 
 
    public function Studentdashboard()
@@ -405,43 +411,80 @@ public function deletefacultyskills()
 public function showCareerForm()
     {
         $model = new Admin_Model();
-        $wherecond = array('is_deleted' => 'Y');
+        $wherecond = array('is_active'=> 'Y','is_deleted' => 'N');
         $facultyskill = $model->getalldata('tbl_faculty_skills', $wherecond);
         
         $data['facultyskill'] = $facultyskill ? $facultyskill : [];
         echo view('career', $data);
     }
     public function saveCareerForm()
-{
-    $model = new Admin_Model();
-    $data = [
-        'fullName' => $this->request->getPost('fullName'),
-        'email' => $this->request->getPost('email'),
-        'phone' => $this->request->getPost('phone'),
-        'position' => $this->request->getPost('position'),
-        'skills' => implode(',', $this->request->getPost('skills')),
-        'resume' => $this->request->getFile('resume'), // Note: This should be an object representing the uploaded file
-        'coverLetter' => $this->request->getPost('coverLetter'),
-    ];
-    if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
-        $newName = $data['resume']->getRandomName();
-        $data['resume']->move(ROOTPATH . 'public/uploads/faculty_resume', $newName);
-        $data['resume'] = $newName; 
-    } else {
-        $data['resume'] = ''; 
+    {
+        // print_r($_POST);die;
+      
+        $model = new Admin_Model();
+        $data = [
+            'fullName' => $this->request->getPost('fullName'),
+            'email' => $this->request->getPost('email'),
+            'phone' => $this->request->getPost('phone'),
+            'skills' => $this->request->getPost('skills'), // This will now be an array of skill IDs
+            'resume' => $this->request->getFile('resume'),
+            'certificates' => $this->request->getFiles('certificates'),
+            'courseCertificates' => $this->request->getFiles('courseCertificates'),
+        ];
+    
+        // Process resume upload
+        if ($data['resume'] && $data['resume']->isValid() && !$data['resume']->hasMoved()) {
+            $newName = $data['resume']->getRandomName();
+            $data['resume']->move(ROOTPATH . 'public/uploads/faculty_resume', $newName);
+            $data['resume'] = $newName;
+        } else {
+            $data['resume'] = '';
+        }
+    
+        // Process certificates upload
+        $certificatePaths = [];
+        if ($data['certificates']) {
+            foreach ($data['certificates']['certificates'] as $certificate) {
+                if ($certificate->isValid() && !$certificate->hasMoved()) {
+                    $newName = $certificate->getRandomName();
+                    $certificate->move(ROOTPATH . 'public/uploads/facultycertificates', $newName);
+                    $certificatePaths[] = $newName;
+                }
+            }
+        }
+        $data['certificates'] = implode(',', $certificatePaths);
+    
+        // Process course certificates upload
+        $courseCertificatePaths = [];
+        if ($data['courseCertificates']) {
+            foreach ($data['courseCertificates']['courseCertificates'] as $courseCertificate) {
+                if ($courseCertificate->isValid() && !$courseCertificate->hasMoved()) {
+                    $newName = $courseCertificate->getRandomName();
+                    $courseCertificate->move(ROOTPATH . 'public/uploads/facultycourseCertificates', $newName);
+                    $courseCertificatePaths[] = $newName;
+                }
+            }
+        }
+        $data['courseCertificates'] = implode(',', $courseCertificatePaths);
+    
+        // Prepare data for database insertion
+        $dbData = [
+            'full_name' => $data['fullName'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'skills' => implode(',', $data['skills']), // Convert the skill IDs array to a comma-separated string
+            'resume' => $data['resume'],
+            'certificates' => $data['certificates'],
+            'courseCertificates' => $data['courseCertificates'],
+        ];
+    
+        // Save the data to the database
+        $model->saveCareerData($dbData);
+    
+        // Redirect to the career page
+        return redirect()->to(base_url('career'));
     }
-    $dbData = [
-        'full_name' => $data['fullName'],
-        'email' => $data['email'],
-        'phone' => $data['phone'],
-        'position' => $data['position'],
-        'skills' => $data['skills'],
-        'resume' => $data['resume'],
-        'cover_letter' => $data['coverLetter'],
-    ];
-    $model->saveCareerData($dbData);
-    return redirect()->to(base_url('career'));
-}
+    
     
 public function studentprofile()
 {
@@ -739,7 +782,17 @@ public function updateApplicationStatus() {
         echo view('Faculty/Facultydoc', $data);
     }
 
-    
+
+    public function logout()
+    {
+        $session = session();
+        // session_destroy();
+        $session->destroy();
+        // print_r($_SESSION);die;
+        return redirect()->to('/');
+    }
+
+
 
 
 }

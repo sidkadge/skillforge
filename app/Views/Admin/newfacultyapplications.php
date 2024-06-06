@@ -1,7 +1,7 @@
 <?php 
 include __DIR__.'/../Admin/Adminsidebar.php';
 ?>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="pcoded-content">
     <div class="pcoded-inner-content">
         <div class="main-body">
@@ -85,6 +85,8 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <th>Full Name</th>
                                                                     <th>Email</th>
                                                                     <th>Resume</th>
+                                                                    <th>Certificates</th>
+                                                                    <th>Cource Certificates</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
@@ -95,8 +97,15 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <td><?= $rowNumber++; ?></td>
                                                                     <td><?= esc($application['full_name']); ?></td>
                                                                     <td><?= esc($application['email']); ?></td>
-                                                                    <td> <a href="<?= base_url('public/uploads/faculty_resume/' . $application['resume']) ?>" target="_blank">
-                                                                <i class="fas fa-eye"></i> </a></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/faculty_resume/' . $application['resume']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/facultycertificates/' . $application['certificates']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/facultycourseCertificates/' . $application['courseCertificates']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
                                                                     <td>
                                                                         <form method="post"
                                                                             action="<?= base_url('updateApplicationStatus') ?>">
@@ -133,6 +142,9 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <th>No</th>
                                                                     <th>Full Name</th>
                                                                     <th>Email</th>
+                                                                    <th>Resume</th>
+                                                                    <th>Certificates</th>
+                                                                    <th>Cource Certificates</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
@@ -143,6 +155,15 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <td><?= $rowNumber++; ?></td>
                                                                     <td><?= esc($application['full_name']); ?></td>
                                                                     <td><?= esc($application['email']); ?></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/faculty_resume/' . $application['resume']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/facultycertificates/' . $application['certificates']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
+                                                                    <td> <a href="<?= base_url('public/uploads/facultycourseCertificates/' . $application['courseCertificates']) ?>"
+                                                                            target="_blank">
+                                                                            <i class="fas fa-eye"></i> </a></td>
                                                                     <td>
                                                                         <form method="post"
                                                                             action="<?= base_url('updateApplicationStatus') ?>">
@@ -154,9 +175,7 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                             <button type="submit" name="status"
                                                                                 value="R"
                                                                                 class="btn btn-danger">Reject</button>
-                                                                            <button type="submit" name="status"
-                                                                                value="P"
-                                                                                class="btn btn-warning">Pending</button>
+                                                                           
                                                                         </form>
                                                                     </td>
                                                                 </tr>
@@ -170,7 +189,7 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="messages3" role="tabpanel">
-                                            <div class="card-block table-border-style">
+                                                <div class="card-block table-border-style">
                                                     <div class="table-responsive">
                                                         <?php if (!empty($acceptapplications)): ?>
                                                         <table class="table">
@@ -179,7 +198,7 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <th>No</th>
                                                                     <th>Full Name</th>
                                                                     <th>Email</th>
-                                                                   
+
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
@@ -190,18 +209,18 @@ include __DIR__.'/../Admin/Adminsidebar.php';
                                                                     <td><?= $rowNumber++; ?></td>
                                                                     <td><?= esc($application['full_name']); ?></td>
                                                                     <td><?= esc($application['email']); ?></td>
-                                                                   
+
                                                                     <td>
                                                                         <form method="post"
                                                                             action="<?= base_url('createpassforfaculty') ?>">
-                                                                          
-                                                                                <input type="hidden" name="email"
+
+                                                                            <input type="hidden" name="email"
                                                                                 value="<?= $application['email']; ?>">
-                                                                           <input type="text" name="Password">
-                                                                           
+                                                                            <input type="text" name="Password">
+
                                                                             <button type="submit" name="status"
-                                                                                
-                                                                                class="btn-round btn-warning">Create Password</button>
+                                                                                class="btn-round btn-warning">Create
+                                                                                Password</button>
                                                                         </form>
                                                                     </td>
                                                                 </tr>

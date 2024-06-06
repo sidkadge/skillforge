@@ -51,9 +51,13 @@ $routes->get('uploadmedia', 'AdminController::uplodefiles');
 $routes->post('upload_img', 'AdminController::upload_img');
 $routes->post('upload_video', 'AdminController::upload_video');
 $routes->post('upload_doc', 'AdminController::upload_doc');
+
 $routes->get('Studentimages', 'AdminController::Studentimages');
 $routes->get('Studentvideos', 'AdminController::Studentvideos');
 $routes->get('Studentdoc', 'AdminController::Studentdoc');
+
+
+$routes->get('logout', 'AdminController::logout');
 
 
 $routes->get('Facultydashboard', 'AdminController::Facultydashboard');
@@ -67,7 +71,8 @@ $routes->get('Facultydoc', 'AdminController::Facultydoc');
 
 
 $routes->post('contactus', 'Home::contactus');
-
+$routes->get('cart', 'Home::cart');
+$routes->get('checkout', 'Home::checkout');
 $routes->post('userregister', 'Home::userregister');
 $routes->post('internal_register', 'Home::internal_register');
 $routes->post('userlogin', 'Home::userlogin');
@@ -83,10 +88,13 @@ $routes->post('updateApplicationStatus', 'AdminController::updateApplicationStat
 $routes->post('createpassforfaculty', 'AdminController::createpassforfaculty');
 
 
-$routes->get('shoolstudent', 'Home::shoolstudent');
+$routes->get('schoolstudent', 'Home::schoolstudent');
 $routes->get('abroadstudent', 'Home::abroadstudent');
 
 
 $routes->get('career', 'AdminController::showCareerForm');
 $routes->post('career', 'AdminController::saveCareerForm');
 
+$routes->post('cart/add', 'CartController::add');
+$routes->get('cart_view', 'CartController::viewCart');
+$routes->get('checkout', 'CartController::viewcheckout');
