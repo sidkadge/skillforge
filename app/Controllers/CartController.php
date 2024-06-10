@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CartItemModel;
+use App\Models\CartModel;
 use CodeIgniter\Controller;
 
 class CartController extends Controller
