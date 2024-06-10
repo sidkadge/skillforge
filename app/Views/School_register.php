@@ -21,10 +21,18 @@
 <body>
 
     <header>
+        <h2 class="logo"></h2>
         <nav class="navigation">
             <a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
         </nav>
+        <nav class="navigation">
+            <a href="<?php echo base_url('School_register')?>">School Register</a>
+        </nav>
+        <nav class="navigation">
+            <a href="<?php echo base_url('loginpage')?>">Login</a>
+        </nav>
     </header>
+  
 
      <!-- Flash Message Display -->
      <div class="containerflashback mt-4">

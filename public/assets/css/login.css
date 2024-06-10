@@ -1,0 +1,4 @@
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(0px);
+}
