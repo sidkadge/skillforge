@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;class Cart extends Model
-{
-    use HasFactory;
+use CodeIgniter\Model;
 
-    protected $fillable = ['course_name', 'price'];
-}class Cart extends Model
+class Cart extends Model
 {
     use HasFactory;
 

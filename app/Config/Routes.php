@@ -87,6 +87,7 @@ $routes->get('newfacultyapplications', 'AdminController::newfacultyapplications'
 $routes->post('updateApplicationStatus', 'AdminController::updateApplicationStatus');
 $routes->post('createpassforfaculty', 'AdminController::createpassforfaculty');
 
+$routes->get('cart/count', 'CartController::count');
 
 $routes->get('schoolstudent', 'Home::schoolstudent');
 $routes->get('abroadstudent', 'Home::abroadstudent');

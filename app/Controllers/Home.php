@@ -123,18 +123,18 @@ class Home extends BaseController
           return redirect()->to(base_url('checkout'));
 
         }
-        public function checkout()
-        {
-            if (!session()->has('user_id')) {
-                // If user is not logged in, redirect to the login page
-                // Also, store the intended URL in the session to redirect back after successful login
-                session()->set('intended_url', 'checkout');
-                return redirect()->to(base_url('login'));
+            public function checkout()
+            {
+                if (!session()->has('user_id')) {
+                    // If user is not logged in, redirect to the login page
+                    // Also, store the intended URL in the session to redirect back after successful login
+                    session()->set('intended_url', 'checkout');
+                    return redirect()->to(base_url('loginpage'));
+                }
+            
+                // If user is logged in, show the checkout page
+                return view('checkout');
             }
-        
-            // If user is logged in, show the checkout page
-            return view('checkout');
-        }
         
         
 
@@ -188,25 +188,6 @@ class Home extends BaseController
         }
 
 
-        
-        // public function userlogin()
-        // {
-        //     $model = new Admin_Model();
-        //     $where = [
-        //         'email' => $this->request->getVar('email'),
-        //         'password' => $this->request->getVar('password')      
-        //     ];
-        //     $result = $model->checkCredentials($where);
-        //     // print_r($result);die;
-        //     if ($result != '') {
-        //         session()->set('user_id', $result['r_id']);
-        //         return redirect()->to('Admindasboard');
-        //     } else {
-        //         session()->setFlashdata('error', 'Invalid credentials');
-        //         return redirect()->to(base_url('/')); 
-        //     }
-        // }
-
         protected function isLoggedIn()
     {
         return session()->has('user_id');
@@ -214,55 +195,55 @@ class Home extends BaseController
    
      
 
-        public function userlogin()
-{
-    $model = new Admin_Model();
-    $email = $this->request->getVar('email');
-    $password = $this->request->getVar('password');
 
-    // Fetch user by email
-    $user = $model->checkCredentials(['email' => $email]);
+    public function userlogin()
+    {
+        $model = new Admin_Model();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
 
-    if ($user) {
-        // Verify the password
-        if ($password === $user['password']) { // Change this to password_verify if passwords are hashed
-            // Set session data
-            $this->session->set('user_id', $user['r_id']);
-            $this->session->set('username', $user['username']);
-            $this->session->set('email', $user['email']);
-            $this->session->set('role', $user['role']);
-            $this->session->set('logged_in', true);
+        // Fetch user by email
+        $user = $model->checkCredentials(['email' => $email]);
 
-            // Check if there's an intended URL in the session
-            $intendedUrl = $this->session->get('intended_url');
+        if ($user) {
+            // Verify the password
+            if ($password === $user['password']) { // Change this to password_verify if passwords are hashed
+                // Set session data
+                session()->set('user_id', $user['r_id']);
+                session()->set('username', $user['username']);
+                session()->set('email', $user['email']);
+                session()->set('role', $user['role']);
+                session()->set('logged_in', true);
 
-            if ($intendedUrl) {
-                // If there's an intended URL, redirect to it
-                return redirect()->to(base_url($intendedUrl));
-            }
+                // Check if there's an intended URL and redirect to it
+                $intendedUrl = session()->get('intended_url');
+                print_r($intendedUrl);die;
+                if ($intendedUrl) {
+                    session()->remove('intended_url');
+                    return redirect()->to(base_url($intendedUrl));
+                }
+                echo '<pre>';print_r($intendedUrl);die;
 
-            // Redirect based on role
-            if ($user['role'] === 'student') {
-                return redirect()->to(base_url('studentdashboard'));
-            } elseif ($user['role'] === 'Admin') {
-                return redirect()->to(base_url('Admindasboard'));
-            } elseif ($user['role'] === 'faculty') {
-                return redirect()->to(base_url('Facultydashboard'));
+                // Redirect based on role
+                if ($user['role'] === 'student') {
+                    return redirect()->to(base_url('studentdashboard'));
+                } elseif ($user['role'] === 'Admin') {
+                    return redirect()->to(base_url('Admindasboard'));
+                } elseif ($user['role'] === 'faculty') {
+                    return redirect()->to(base_url('Facultydashboard'));
+                } else {
+                    session()->setFlashdata('error', 'Invalid credentials');
+                    return redirect()->to(base_url('/checkout'));
+                }
             } else {
-                $this->session->setFlashdata('error', 'Invalid credentials');
-                return redirect()->to(base_url('/')); 
+                session()->setFlashdata('error', 'Invalid password');
+                return redirect()->to(base_url('/checkout'));
             }
         } else {
-            $this->session->setFlashdata('error', 'Invalid password');
-            return redirect()->to(base_url('/'));
+            session()->setFlashdata('error', 'User not found');
+            return redirect()->to(base_url('/checkout'));
         }
-
-    } else {
-        $this->session->setFlashdata('error', 'User not found');
-        return redirect()->to(base_url('/'));
     }
-}
-
 
         public function submitEnquiry()
         {
