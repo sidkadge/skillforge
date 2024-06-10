@@ -72,6 +72,7 @@ $routes->get('Facultydoc', 'AdminController::Facultydoc');
 
 $routes->post('contactus', 'Home::contactus');
 $routes->get('cart', 'Home::cart');
+$routes->get('loginpage', 'Home::loginpage');
 $routes->get('checkout', 'Home::checkout');
 $routes->post('userregister', 'Home::userregister');
 $routes->post('internal_register', 'Home::internal_register');

@@ -24,100 +24,97 @@
         <nav class="navigation">
             <a href="<?php echo base_url('School_register')?>">School Register</a>
         </nav>
+        <nav class="navigation">
+            <a href="<?php echo base_url('loginpage')?>">Login</a>
+        </nav>
     </header>
 
     <div class="wrapper active active-popup">
-        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
-        <div class="form-box login">
-            <h2>Login</h2>
-            <form action="<?php echo base_url()?>userlogin" method="post">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="email" name="email" required>
-                    <label>Email</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" name="password" required>
-                    <label>Password</label>
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn-submit">Login</button>
-                <div class="login-register">
-                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
-                </div>
-            </form>
-        </div>
+        <span class="icon-close">
+            <ion-icon name="close"></ion-icon>
+        </span>
+
+
 
         <div class="form-box register" id="registrationForm">
             <h2 pt="none">Abroad Registration</h2>
-            
+
             <form action="<?php echo base_url()?>userregister" method="post" id="registerForm">
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="person"></ion-icon></span>
-                    <input type="text" name="username" id="username" required pattern="[a-zA-Z]+" title="Username can only contain alphabetic characters">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" name="username" id="username" required pattern="[a-zA-Z]+"
+                        title="Username can only contain alphabetic characters">
                     <label>Candidate Name</label>
                     <span class="error-message" id="username-error"></span> <!-- Error message for username -->
                 </div>
 
                 <div class="input-box">
-                        <span class="icon"><ion-icon name="calendar"></ion-icon></span>
-                        <input type="number" name="age" id="age" min="1" required>
-                        <label for="age">Age</label>
-                        <span class="error-message" id="age-error"></span>
+                    <span class="icon">
+                        <ion-icon name="calendar"></ion-icon>
+                    </span>
+                    <input type="number" name="age" id="age" min="1" required>
+                    <label for="age">Age</label>
+                    <span class="error-message" id="age-error"></span>
                 </div>
 
                 <div class="input-box">
-                        <span class="icon"><ion-icon name="transgender"></ion-icon></span>
-                        <select name="gender" id="gender" required>
-                            <option value="" disabled selected>Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <label for="gender"></label>
-                        <span class="error-message" id="gender-error"></span>
+                    <span class="icon">
+                        <ion-icon name="transgender"></ion-icon>
+                    </span>
+                    <select name="gender" id="gender" required>
+                        <option value="" disabled selected>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="gender"></label>
+                    <span class="error-message" id="gender-error"></span>
                 </div>
 
                 <div class="input-box" id="mobile-box">
-                        <span class="icon"><ion-icon name="call"></ion-icon></span>
-                        <input type="tel" name="mobile" id="mobile" required>
-                        <label for="mobile">Mobile</label>
-                        <span class="error-message" id="mobile-error"></span>
+                    <span class="icon">
+                        <ion-icon name="call"></ion-icon>
+                    </span>
+                    <input type="tel" name="mobile" id="mobile" required>
+                    <label for="mobile">Mobile</label>
+                    <span class="error-message" id="mobile-error"></span>
                 </div>
 
                 <div class="input-box" id="email-box">
-                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" name="email" id="email" required>
-                        <label for="email">Email</label>
-                        <span class="error-message" id="email-error"></span>
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                    <span class="error-message" id="email-error"></span>
                 </div>
 
-                
+
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
                     <input type="password" name="password" id="password" required minlength="8">
                     <label>Password</label>
                     <span class="error-message" id="password-error"></span>
                 </div>
 
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="country"></ion-icon></span>
-                    <input type="text" name="visitcountry" id="visitcountry" required pattern="[a-zA-Z]+" title="Country name can only contain alphabetic characters">
+                    <span class="icon">
+                        <ion-icon name="country"></ion-icon>
+                    </span>
+                    <input type="text" name="visitcountry" id="visitcountry" required pattern="[a-zA-Z]+"
+                        title="Country name can only contain alphabetic characters">
                     <label>Visiting Country</label>
                     <span class="error-message" id="countryname-error"></span> <!-- Error message for username -->
                 </div>
 
                 <div class="dropdown-button">
-                    <button class="btn btn-success dropdown-toggle underline-button"
-                            type="button"
-                            id="multiSelectDropdown"
-                            name="selectedLanguages"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                    <button class="btn btn-success dropdown-toggle underline-button" type="button"
+                        id="multiSelectDropdown" name="selectedLanguages" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Language Known<span id="selectedLanguages"></span>
                     </button>
                     <ul class="dropdown-menu bc=#212529" aria-labelledby="multiSelectDropdown">
@@ -135,7 +132,8 @@
                         </li>
                         <li>
                             <label>
-                                <input type="checkbox" value="Other" id="otherLanguageCheckbox" class="languageCheckbox">
+                                <input type="checkbox" value="Other" id="otherLanguageCheckbox"
+                                    class="languageCheckbox">
                                 Regional
                             </label>
                         </li>
@@ -148,7 +146,9 @@
                 </div>
 
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="location"></ion-icon></span>
+                    <span class="icon">
+                        <ion-icon name="location"></ion-icon>
+                    </span>
                     <select name="state" id="state" required>
                         <option value="" disabled selected>State</option>
                         <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -181,7 +181,8 @@
                         <option value="West Bengal">West Bengal</option>
                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                         <option value="Chandigarh">Chandigarh</option>
-                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and
+                            Diu</option>
                         <option value="Delhi">Delhi</option>
                         <option value="Lakshadweep">Lakshadweep</option>
                         <option value="Puducherry">Puducherry</option>
@@ -191,15 +192,21 @@
                 </div>
 
                 <div class="input-box">
-                <span class="icon"><ion-icon name="business"></ion-icon></span>
-                    <input type="text" name="city" id="city" required pattern="[a-zA-Z]+" title="City name can only contain alphabetic characters">
+                    <span class="icon">
+                        <ion-icon name="business"></ion-icon>
+                    </span>
+                    <input type="text" name="city" id="city" required pattern="[a-zA-Z]+"
+                        title="City name can only contain alphabetic characters">
                     <label>City</label>
                     <span class="error-message" id="cityname-error"></span>
                 </div>
 
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="location"></ion-icon></span>
-                    <input type="text" name="area" id="area" required pattern="[a-zA-Z]+" title="Area can only contain alphabetic characters">
+                    <span class="icon">
+                        <ion-icon name="location"></ion-icon>
+                    </span>
+                    <input type="text" name="area" id="area" required pattern="[a-zA-Z]+"
+                        title="Area can only contain alphabetic characters">
                     <label>Area / Location</label>
                     <span class="error-message" id="areaname-error"></span>
                 </div>
@@ -209,13 +216,14 @@
                 </div>
                 <button type="submit" class="btn-submit">Register</button>
                 <div class="login-register">
-                    <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
+                    <p>Already have an account?<a href="<?php echo base_url('loginpage')?>"> Login</a></p>
                 </div>
                 <div>
                     <input type="hidden" name="student_type" value="abroad">
                 </div>
             </form>
         </div>
+    </div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -341,7 +349,7 @@
         wrapper.classList.remove('active');
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const languageCheckboxes = document.querySelectorAll('.languageCheckbox');
         const otherLanguageCheckbox = document.getElementById('otherLanguageCheckbox');
         const otherLanguageInputContainer = document.getElementById('otherLanguageInputContainer');
@@ -352,7 +360,7 @@
             checkbox.addEventListener('change', updateSelectedLanguages);
         });
 
-        otherLanguageCheckbox.addEventListener('change', function () {
+        otherLanguageCheckbox.addEventListener('change', function() {
             if (this.checked) {
                 otherLanguageInputContainer.style.display = 'block';
             } else {
@@ -368,63 +376,75 @@
             const selectedLanguages = Array.from(languageCheckboxes)
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value === 'Other' ? otherLanguageInput.value : checkbox.value)
-                .filter(language => language); 
+                .filter(language => language);
 
-            selectedLanguagesSpan.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` : '';
+            selectedLanguagesSpan.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` :
+                '';
         }
     });
     </script>
     <style>
-        .form-box {
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 0px;
-            -ms-overflow-style: none;
-            scrollbar-width: none; 
-        }
-        .input-box input,
-        .input-box select {
-            width: 100%;
-            padding: 11px;
-            background-color: transparent;
-            border: none;       
-        }
-        .input-box select, option {
-            font-weight: 450;       
-        }
-        .input-box label{
-            padding-left: 10px;
-        }
-        .dropdown-button{
-            margin-top: 35px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #000000;
-        }
-        .dropdown-menu{
-            background-color: #6cb05c;
-            padding-left: 20px;
-        }
-        .btn-submit{
-            background-color: #212529;
-            width: 100%;
-            height: 2.7rem;
-            border-radius: 5px;
-            color: white;
-            border: none;
-        }
-        .form-box.register {
-            padding-top: 0; 
-            margin-top: 0; 
-            padding-bottom:0;
-        }
-        header {
-            display: flex;
-            justify-content: flex-end; 
-            align-items: center;
-        }
-        .navigation {
-            margin-left: 10px; 
-        }
+    .form-box {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 0px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .input-box input,
+    .input-box select {
+        width: 100%;
+        padding: 11px;
+        background-color: transparent;
+        border: none;
+    }
+
+    .input-box select,
+    option {
+        font-weight: 450;
+    }
+
+    .input-box label {
+        padding-left: 10px;
+    }
+
+    .dropdown-button {
+        margin-top: 35px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #000000;
+    }
+
+    .dropdown-menu {
+        background-color: #6cb05c;
+        padding-left: 20px;
+    }
+
+    .btn-submit {
+        background-color: #212529;
+        width: 100%;
+        height: 2.7rem;
+        border-radius: 5px;
+        color: white;
+        border: none;
+    }
+
+    .form-box.register {
+        padding-top: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+
+    header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .navigation {
+        margin-left: 10px;
+    }
     </style>
 </body>
+
 </html>

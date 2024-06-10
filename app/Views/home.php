@@ -18,7 +18,7 @@
                                             Education</span>
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
-                                        <a class="button button-primary-gradient" href="#"><span>sign up for
+                                        <a class="button button-primary-gradient" href="<?php echo base_url('register')?>"><span>sign up for
                                                 excursion</span></a>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                         with <span class="text-italic font-weight-bold">Professional Education</span>
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
-                                        <a class="button button-primary-gradient" href="#"><span>sign up for
+                                        <a class="button button-primary-gradient" href="<?php echo base_url('register') ?>"><span>sign up for
                                                 excursion</span></a>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                         Campus and <span class="text-italic font-weight-bold">Make Friends</span>
                                     </h2>
                                     <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="450">
-                                        <a class="button button-primary-gradient" href="#"><span>sign up for
+                                        <a class="button button-primary-gradient" href="<?php echo base_url('register') ?>"><span>sign up for
                                                 excursion</span></a>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
         </div>
         
         <div class="col-md-8 col-lg-7 col-xl-7 wow fadeIn">
-            <h3 class="h-custom-1 f1" style="margin-top: 2rem;">Enriching International Experiences with Extracurricular Involvement</h3>
+            <h3 class="h-custom-1 f1" style="margin-top: 2rem;">Empowering Children Abroad with Extracurricular Activities</h3>
             <p>
                 In an unfamiliar social environment <strong><em>abroad</em></strong>, there are significant differences compared to our home country. Adjusting to these differences is essential for all students studying abroad. While in our country, services such as fitters, electricians, and plumbers are readily available, in other countries, they may come at a high cost. <br>Therefore, our organization believes in equipping students with essential life skills from an early age to prepare them for such situations. By teaching these skills and encouraging <strong><em>precautionary measures</em></strong>, we aim to ensure that our students can navigate challenges effectively while studying and living abroad. <br>These activities not only enhance students' social and interpersonal skills but also <strong><em>broaden their perspectives </em></strong> and help them integrate into diverse communities abroad. 
             </p>

@@ -29,6 +29,10 @@ class Home extends BaseController
     {
          echo view('login');
     }
+    public function loginpage()
+    {
+         echo view('loginpage');
+    }
     public function abroadstudent()
     {
          echo view('abroadstudent');
@@ -195,13 +199,17 @@ class Home extends BaseController
    
      
 
-
     public function userlogin()
     {
         $model = new Admin_Model();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
+
+        // Fetch user by email
+        $user = $model->checkCredentials(['email' => $email]);
+
+    
         // Fetch user by email
         $user = $model->checkCredentials(['email' => $email]);
 
@@ -214,6 +222,7 @@ class Home extends BaseController
                 session()->set('email', $user['email']);
                 session()->set('role', $user['role']);
                 session()->set('logged_in', true);
+
 
                 // Check if there's an intended URL and redirect to it
                 $intendedUrl = session()->get('intended_url');
@@ -233,17 +242,33 @@ class Home extends BaseController
                     return redirect()->to(base_url('Facultydashboard'));
                 } else {
                     session()->setFlashdata('error', 'Invalid credentials');
+
                     return redirect()->to(base_url('/checkout'));
                 }
             } else {
                 session()->setFlashdata('error', 'Invalid password');
                 return redirect()->to(base_url('/checkout'));
+
+                    return redirect()->to(base_url('/'));
+                }
+            } else {
+                session()->setFlashdata('error', 'Invalid password');
+                return redirect()->to(base_url('/'));
+
             }
+    
         } else {
             session()->setFlashdata('error', 'User not found');
+
             return redirect()->to(base_url('/checkout'));
         }
     }
+
+            return redirect()->to(base_url('/'));
+        }
+    }
+
+
 
         public function submitEnquiry()
         {
