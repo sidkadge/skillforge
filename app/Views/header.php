@@ -107,7 +107,7 @@
                                     </li>
                                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('contact_us') ?>">Contacts</a></li>
                                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('career') ?>">Career</a></li>
-                                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('register') ?>">Register</a></li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('Selectcourse') ?>">Register</a></li>
                                     <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('cart_view') ?>">Cart (<span id="cart-count">0</span>)</a></li>
                                     
                                     <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="<?php echo base_url('login') ?>">Login</a></li> -->
