@@ -122,6 +122,7 @@ class Home extends BaseController
         
 
 
+
         public function checkout()
         {
             if (!session()->has('user_id')) {
@@ -129,11 +130,21 @@ class Home extends BaseController
                 // Also, store the intended URL in the session to redirect back after successful login
                 session()->set('intended_url', 'checkout');
                 return redirect()->to(base_url('login'));
-            }
-        
-            // If user is logged in, show the checkout page
-            return view('checkout');
+
         }
+            public function checkout()
+            {
+                if (!session()->has('user_id')) {
+                    // If user is not logged in, redirect to the login page
+                    // Also, store the intended URL in the session to redirect back after successful login
+                    session()->set('intended_url', 'checkout');
+                    return redirect()->to(base_url('loginpage'));
+                }
+            
+                // If user is logged in, show the checkout page
+                return view('checkout');
+
+            }
         
         
 
@@ -195,15 +206,21 @@ class Home extends BaseController
     }
    
      
+
     public function userlogin()
     {
         $model = new Admin_Model();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
+
+
+        // Fetch user by email
+        $user = $model->checkCredentials(['email' => $email]);
+
     
         // Fetch user by email
         $user = $model->checkCredentials(['email' => $email]);
-    
+
         if ($user) {
             // Verify the password
             if ($password === $user['password']) { // Change this to password_verify if passwords are hashed
@@ -213,7 +230,17 @@ class Home extends BaseController
                 session()->set('email', $user['email']);
                 session()->set('role', $user['role']);
                 session()->set('logged_in', true);
-    
+
+
+                // Check if there's an intended URL and redirect to it
+                $intendedUrl = session()->get('intended_url');
+                print_r($intendedUrl);die;
+                if ($intendedUrl) {
+                    session()->remove('intended_url');
+                    return redirect()->to(base_url($intendedUrl));
+                }
+                echo '<pre>';print_r($intendedUrl);die;
+
                 // Redirect based on role
                 if ($user['role'] === 'student') {
                     return redirect()->to(base_url('studentdashboard'));
@@ -223,23 +250,68 @@ class Home extends BaseController
                     return redirect()->to(base_url('Facultydashboard'));
                 } else {
                     session()->setFlashdata('error', 'Invalid credentials');
+
+                    return redirect()->to(base_url('/checkout'));
+                }
+            } else {
+                session()->setFlashdata('error', 'Invalid password');
+                return redirect()->to(base_url('/checkout'));
+
                     return redirect()->to(base_url('/'));
                 }
             } else {
                 session()->setFlashdata('error', 'Invalid password');
                 return redirect()->to(base_url('/'));
+
             }
     
         } else {
             session()->setFlashdata('error', 'User not found');
+
+            return redirect()->to(base_url('/checkout'));
+        }
+    }
+
             return redirect()->to(base_url('/'));
         }
     }
 
 
+
     public function submitEnquiry()
     {
         $db = \Config\Database::connect();
+
+
+        public function submitEnquiry()
+        {
+            $db = \Config\Database::connect();
+               // print_r($_POST);die;
+           
+                $studentName = $this->request->getPost('studentName');
+                $parentsName = $this->request->getPost('parentsName');
+                $contactNo = $this->request->getPost('contactNo');
+                $email = $this->request->getPost('email');
+                $medium = $this->request->getPost('medium');
+                $class = $this->request->getPost('class');
+                $languages = $this->request->getPost('languages');
+                $schoolName = $this->request->getPost('schoolName');
+                $age = $this->request->getPost('age');
+                $areaOfResidence = $this->request->getPost('areaOfResidence');
+                
+                $data = [
+                    'student_name' => $studentName,
+                    'parents_name' => $parentsName,
+                    'contact_no' => $contactNo,
+                    'email' => $email,
+                    'medium' => $medium,
+                    'class' => $class,
+                    'languages' => $languages,
+                    'school_name' => $schoolName,
+                    'age' => $age,
+                    'area_of_residence' => $areaOfResidence
+                ];
+
             // print_r($_POST);die;
         
             $studentName = $this->request->getPost('studentName');
