@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,6 @@
 </head>
 
 <body>
-
     <header>
         <h2 class="logo"></h2>
         <nav class="navigation">
@@ -29,15 +27,25 @@
         </nav>
     </header>
 
+    <!-- Flash Messages -->
+    <?php if(session()->getFlashdata('success')): ?>
+        <div class="alert alert-success flash-message">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger flash-message">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
     <div class="wrapper active active-popup">
         <span class="icon-close">
             <ion-icon name="close"></ion-icon>
         </span>
 
-
-
         <div class="form-box register" id="registrationForm">
-            <h2 pt="none">Abroad Registration</h2>
+            <h2 pt="none">Extracurricular Participation Form for Abroad Students</h2>
 
             <form action="<?php echo base_url()?>userregister" method="post" id="registerForm">
                 <div class="input-box">
@@ -77,7 +85,8 @@
                     <span class="icon">
                         <ion-icon name="call"></ion-icon>
                     </span>
-                    <input type="tel" name="mobile" id="mobile" required>
+                    <input type="number" name="mobile" id="mobile" required maxlength="10" minlength="10" pattern="\d{10}" 
+                    title="Mobile number should exactly 10 digit.">
                     <label for="mobile">Mobile</label>
                     <span class="error-message" id="mobile-error"></span>
                 </div>
@@ -108,14 +117,16 @@
                     <input type="text" name="visitcountry" id="visitcountry" required pattern="[a-zA-Z]+"
                         title="Country name can only contain alphabetic characters">
                     <label>Visiting Country</label>
-                    <span class="error-message" id="countryname-error"></span> <!-- Error message for username -->
+                    <span class="error-message" id="countryname-error"></span>
                 </div>
 
                 <div class="dropdown-button">
-                    <button class="btn btn-success dropdown-toggle underline-button" type="button"
-                        id="multiSelectDropdown" name="selectedLanguages" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Language Known<span id="selectedLanguages"></span>
+                    <button class="btn btn-success dropdown-toggle underline-button"
+                            type="button"
+                            id="multiSelectDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Language Known<span id="selectedLanguagesText"></span>
                     </button>
                     <ul class="dropdown-menu bc=#212529" aria-labelledby="multiSelectDropdown">
                         <li>
@@ -132,9 +143,8 @@
                         </li>
                         <li>
                             <label>
-                                <input type="checkbox" value="Other" id="otherLanguageCheckbox"
-                                    class="languageCheckbox">
-                                Regional
+                                <input type="checkbox" value="Other" id="otherLanguageCheckbox" class="languageCheckbox">
+                                Other
                             </label>
                         </li>
                         <li id="otherLanguageInputContainer" style="display: none;">
@@ -143,6 +153,7 @@
                             </label>
                         </li>
                     </ul>
+                    <input type="hidden" name="selectedLanguages" id="selectedLanguages" required>
                 </div>
 
                 <div class="input-box">
@@ -187,7 +198,7 @@
                         <option value="Lakshadweep">Lakshadweep</option>
                         <option value="Puducherry">Puducherry</option>
                     </select>
-                    <label></label>
+                    <label for="state"></label>
                     <span class="error-message" id="state-error"></span>
                 </div>
 
@@ -224,143 +235,40 @@
             </form>
         </div>
     </div>
-    </div>
+   
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js"></script>
+    
     <script>
-    $(document).ready(function() {
-        $('#registerForm').validate({
-            rules: {
-                username: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                },
-                age: {
-                    required: true,
-                    number: true,
-                    min: 1
-                },
-                gender: {
-                    required: true
-                },
-                mobile: {
-                    required: true,
-                    pattern: /^[0-9]{10}$/
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                password: {
-                    required: true,
-                    minlength: 8
-                },
-                visitcountry: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                },
-                state: {
-                    required: true
-                },
-                city: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                },
-                area: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                }
-            },
-            messages: {
-                username: {
-                    required: 'Please enter your username.',
-                    pattern: 'Username can only contain alphabetic characters.'
-                },
-                age: {
-                    required: 'Please enter your age.',
-                    number: 'Age must be a number.',
-                    min: 'Age must be at least 1.'
-                },
-                gender: {
-                    required: 'Please select your gender.'
-                },
-                mobile: {
-                    required: 'Please enter your mobile number.',
-                    pattern: 'Mobile number must be exactly 10 digits.'
-                },
-                email: {
-                    required: 'Please enter your email address.',
-                    email: 'Please enter a valid email address.'
-                },
-                password: {
-                    required: 'Please enter your password.',
-                    minlength: 'Password must be at least 8 characters long.'
-                },
-                visitcountry: {
-                    required: 'Please enter the visiting country.',
-                    pattern: 'Country name can only contain alphabetic characters.'
-                },
-                state: {
-                    required: 'Please select your state.'
-                },
-                city: {
-                    required: 'Please enter your city.',
-                    pattern: 'City name can only contain alphabetic characters.'
-                },
-                area: {
-                    required: 'Please enter your area.',
-                    pattern: 'Area can only contain alphabetic characters.'
-                }
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.siblings('.error-message'));
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
+        const wrapper = document.querySelector('.wrapper');
+        const loginLink = document.querySelector('.login-link');
+        const registerLink = document.querySelector('.register-link');
+        const iconClose = document.querySelector('.icon-close');
+
+        registerLink.addEventListener('click', () => {
+            wrapper.classList.add('active');
         });
 
-        $('.login-link').click(function(e) {
-            e.preventDefault();
-            $('.form-box.login').show();
-            $('.form-box.register').hide();
+        loginLink.addEventListener('click', () => {
+            wrapper.classList.remove('active');
         });
-
-        $('.register-link').click(function(e) {
-            e.preventDefault();
-            $('.form-box.login').hide();
-            $('.form-box.register').show();
-        });
-    });
     </script>
     <script>
-    const wrapper = document.querySelector('.wrapper');
-    const loginLink = document.querySelector('.login-link');
-    const registerLink = document.querySelector('.register-link');
-    const iconClose = document.querySelector('.icon-close');
-
-    registerLink.addEventListener('click', () => {
-        wrapper.classList.add('active');
-    });
-
-    loginLink.addEventListener('click', () => {
-        wrapper.classList.remove('active');
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const languageCheckboxes = document.querySelectorAll('.languageCheckbox');
         const otherLanguageCheckbox = document.getElementById('otherLanguageCheckbox');
         const otherLanguageInputContainer = document.getElementById('otherLanguageInputContainer');
         const otherLanguageInput = document.getElementById('otherLanguageInput');
-        const selectedLanguagesSpan = document.getElementById('selectedLanguages');
+        const selectedLanguagesInput = document.getElementById('selectedLanguages');
+        const selectedLanguagesText = document.getElementById('selectedLanguagesText');
 
         languageCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', updateSelectedLanguages);
         });
 
-        otherLanguageCheckbox.addEventListener('change', function() {
+        otherLanguageCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 otherLanguageInputContainer.style.display = 'block';
             } else {
@@ -376,13 +284,58 @@
             const selectedLanguages = Array.from(languageCheckboxes)
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value === 'Other' ? otherLanguageInput.value : checkbox.value)
-                .filter(language => language);
+                .filter(language => language); // Remove empty strings
 
-            selectedLanguagesSpan.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` :
-                '';
+            selectedLanguagesInput.value = selectedLanguages.join(', ');
+            selectedLanguagesText.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` : '';
         }
+
+        // Additional client-side validation
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            const selectedLanguages = selectedLanguagesInput.value.trim();
+            if (!selectedLanguages) {
+                alert('Please select at least one language.');
+                event.preventDefault();
+            }
+
+            // Validate other fields
+            const requiredFields = document.querySelectorAll('#registerForm [required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                const errorMessage = field.nextElementSibling;
+                if (!field.value) {
+                    errorMessage.textContent = 'This field is required.';
+                    isValid = false;
+                } else {
+                    errorMessage.textContent = '';
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
     });
+    $(document).ready(function () {
+    $("#mobile").on('input', function () {
+        if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+        }
+    })});
+
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var flashMessage = document.querySelector('.alert');
+            if (flashMessage) {
+                setTimeout(function () {
+                    flashMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+
     <style>
     .form-box {
         max-height: 400px;
@@ -443,6 +396,24 @@
 
     .navigation {
         margin-left: 10px;
+    }
+    .alert {
+        margin-bottom: 10px;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        text-align: center;
+        margin-bottom: 37rem;
+        left: 41.6%;
+        position: absolute;
+    } 
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
     }
     </style>
 </body>

@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website With Login & Registration</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="public/assets/css/registerlogin.css">
     <link rel="stylesheet" href="public/assets/css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,11 +21,12 @@
             <a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
         </nav>
         <nav class="navigation">
-            <a href="<?php echo base_url('School_register')?>">School Register</a>
+            <a href="<?php echo base_url('register')?>">Abroad Registration</a>
         </nav>
         <nav class="navigation">
-            <a href="<?php echo base_url('loginpage')?>">Login</a>
+            <a href="<?php echo base_url('School_register')?>">School Register</a>
         </nav>
+        
     </header>
     
 
@@ -68,7 +68,7 @@
                     </div>
                     <button type="submit" class="btn-register">Login</button>
                     <div class="login-register">
-                        <p>Don't have an account?<a href="<?php echo base_url('register')?>" > Register</a></p>
+                        <p>Don't have an account?<a href="<?php echo base_url('Selectcourse')?>" > Register</a></p>
                     </div>
                 </form>
             </div>
@@ -184,7 +184,27 @@
             margin-left: 10px;
         }
         .containerflashback {
-            position: sticky;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20%;
+        z-index: 1000;
+        }
+        .alert {
+            margin-bottom: 10px;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            text-align: center;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            text-align: center;
         }
     </style>
 

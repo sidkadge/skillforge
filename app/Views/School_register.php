@@ -26,7 +26,7 @@
             <a class="rd-nav-link" href="<?php echo base_url('/') ?>">Home</a>
         </nav>
         <nav class="navigation">
-            <a href="<?php echo base_url('School_register')?>">School Register</a>
+            <a href="<?php echo base_url('register')?>">Abroad Registration</a>
         </nav>
         <nav class="navigation">
             <a href="<?php echo base_url('loginpage')?>">Login</a>
@@ -34,7 +34,6 @@
     </header>
   
 
-     <!-- Flash Message Display -->
      <div class="containerflashback mt-4">
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success">
@@ -52,7 +51,7 @@
         <span class="icon-close"><ion-icon name="close"></ion-icon></span>
 
         <div class="form-box register" id="registrationForm">
-            <h2>School <br>Form Registration</h2>
+            <h2>Vacational Courses</h2>
             <div class="form-container">
                 <form action="<?php echo base_url()?>internal_register" method="post">
                     <div class="input-box">
@@ -76,7 +75,8 @@
     
                     <div class="input-box" id="mobile-box">
                         <span class="icon"><ion-icon name="call"></ion-icon></span>
-                        <input type="tel" name="mobile" id="mobile" pattern="[0-9]{10}" required>
+                        <input type="number" name="mobile" id="mobile" required maxlength="10" minlength="10"
+                            title="Mobile number should exactly 10 digit.">
                         <label for="mobile">Mobile</label>
                         <span class="error-message" id="mobile-error"></span>
                     </div>
@@ -132,7 +132,7 @@
                                 id="multiSelectDropdown"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            Language Known<span id="selectedLanguages"></span>
+                            Language Known<span id="selectedLanguagesText"></span>
                         </button>
                         <ul class="dropdown-menu bc=#212529" aria-labelledby="multiSelectDropdown">
                             <li>
@@ -159,6 +159,7 @@
                                 </label>
                             </li>
                         </ul>
+                        <input type="hidden" name="selectedLanguages" id="selectedLanguages" required>
                     </div>
 
                     <div class="input-box">
@@ -232,7 +233,7 @@
                         <input type="hidden" name="student_type" value="student">
                     </div>
                     <div class="login-register">
-                        <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
+                        <p>Already have an account?<a href="<?php echo base_url('loginpage')?>"> Login</a></p>
                     </div>
                 </form>
             </div>
@@ -249,80 +250,6 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#registrationForm form').validate({
-            rules: {
-                username: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                },
-                parentname: {
-                    required: true,
-                    pattern: /^[a-zA-Z]+$/
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                mobile: {
-                    required: true,
-                    pattern: /^[0-9]{10}$/
-                },
-                age: {
-                    required: true,
-                    number: true,
-                    min: 1
-                },
-                schoolStandard: {
-                    required: true
-                },
-                gender: {
-                    required: true
-                },
-                password: {
-                    required: true,
-                    minlength: 8
-                }
-            },
-            messages: {
-                username: {
-                    required: 'Please enter your student name.',
-                    pattern: 'Student name cannot contain numeric values.'
-                },
-                parentname: {
-                    required: 'Please enter your parent name.',
-                    pattern: 'Parent name cannot contain numeric values.'
-                },
-                email: {
-                    required: 'Please enter your email address.',
-                    email: 'Please enter a valid email address.'
-                },
-                mobile: {
-                    required: 'Please enter your mobile number.',
-                    pattern: 'Please enter a valid 10-digit mobile number.'
-                },
-                age: {
-                    required: 'Please enter your age.',
-                    number: 'Please enter a valid number.',
-                    min: 'Age must be at least 1.'
-                },
-                schoolStandard: {
-                    required: 'Please select your school standard.'
-                },
-                gender: {
-                    required: 'Please select your gender.'
-                },
-                password: {
-                    required: 'Please enter your password.',
-                    minlength: 'Password must be at least 8 characters long.'
-                }
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.siblings('.error-message'));
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
 
         $('.login-link').click(function(e) {
             e.preventDefault();
@@ -338,54 +265,80 @@
     });
     </script>
     <script>
+         setTimeout(function() {
+            $('.flash-message').fadeOut('slow');
+        }, 3000);
         document.addEventListener('DOMContentLoaded', function () {
-            const languageCheckboxes = document.querySelectorAll('.languageCheckbox');
-            const otherLanguageCheckbox = document.getElementById('otherLanguageCheckbox');
-            const otherLanguageInputContainer = document.getElementById('otherLanguageInputContainer');
-            const otherLanguageInput = document.getElementById('otherLanguageInput');
-            const selectedLanguagesSpan = document.getElementById('selectedLanguages');
+        const languageCheckboxes = document.querySelectorAll('.languageCheckbox');
+        const otherLanguageCheckbox = document.getElementById('otherLanguageCheckbox');
+        const otherLanguageInputContainer = document.getElementById('otherLanguageInputContainer');
+        const otherLanguageInput = document.getElementById('otherLanguageInput');
+        const selectedLanguagesInput = document.getElementById('selectedLanguages');
+        const selectedLanguagesText = document.getElementById('selectedLanguagesText');
 
-            languageCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', updateSelectedLanguages);
-            });
+        languageCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectedLanguages);
+        });
 
-            otherLanguageCheckbox.addEventListener('change', function () {
-                if (this.checked) {
-                    otherLanguageInputContainer.style.display = 'block';
-                } else {
-                    otherLanguageInputContainer.style.display = 'none';
-                    otherLanguageInput.value = '';
-                    updateSelectedLanguages();
-                }
-            });
-
-            otherLanguageInput.addEventListener('input', updateSelectedLanguages);
-
-            function updateSelectedLanguages() {
-                const selectedLanguages = Array.from(languageCheckboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value === 'Other' ? otherLanguageInput.value : checkbox.value)
-                    .filter(language => language); // Remove empty strings
-
-                selectedLanguagesSpan.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` : '';
+        otherLanguageCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                otherLanguageInputContainer.style.display = 'block';
+            } else {
+                otherLanguageInputContainer.style.display = 'none';
+                otherLanguageInput.value = '';
+                updateSelectedLanguages();
             }
         });
+
+        otherLanguageInput.addEventListener('input', updateSelectedLanguages);
+
+        function updateSelectedLanguages() {
+            const selectedLanguages = Array.from(languageCheckboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value === 'Other' ? otherLanguageInput.value : checkbox.value)
+                .filter(language => language); // Remove empty strings
+
+            selectedLanguagesInput.value = selectedLanguages.join(', ');
+            selectedLanguagesText.textContent = selectedLanguages.length ? `(${selectedLanguages.join(', ')})` : '';
+        }
+        
+        $(document).ready(function () {
+    $("#mobile").on('input', function () {
+        if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+        }
+    })})
+    });
+</script>
+
+<script>
+    // jQuery function to hide the success message after 5 seconds
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".toast").fadeOut(1000);
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });
     </script>
 
     <style>
         .input-box {
             position: relative;
             margin-bottom: 20px;
+            background-color: transparent;
         }
         .input-box input,
         .input-box select {
             width: 100%;
-            padding: 10px;
+            padding: 11px;
             background-color: transparent;
             border: none;
         }
+        .input-box select,
+        option {
+            font-weight: 450;
+        }
         .input-box label {
-            position: absolute;
+            padding-left: 11px;
         }
         .input-box .error-message {
             color: red;
@@ -439,17 +392,40 @@
         }
         header {
             display: flex;
-            justify-content: flex-end; /* Aligns children to the end (right side) of the header */
+            justify-content: flex-end;
             align-items: center;
         }
 
         .navigation {
-            margin-left: 10px; /* Add some margin between navigation links if needed */
+            margin-left: 10px;
         }
-        .containerflashback{
-            position: sticky;
+        .containerflashback {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20%;
+        z-index: 1000;
         }
-    </style>
+
+        .alert {
+            margin-bottom: 10px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            text-align: center;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            text-align: center;
+        }
+</style>
 
 </body>
 

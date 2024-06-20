@@ -70,6 +70,7 @@ $routes->get('Facultyimages', 'AdminController::Facultyimages');
 $routes->get('Facultydoc', 'AdminController::Facultydoc');
 
 
+$routes->get('Selectcourse', 'Home::Selectcourse');
 $routes->post('contactus', 'Home::contactus');
 $routes->get('cart', 'Home::cart');
 $routes->get('loginpage', 'Home::loginpage');

@@ -21,6 +21,10 @@ class Home extends BaseController
     {
          echo view('contact_us');
     }
+    public function Selectcourse()
+    {
+         echo view('Selectcourse');
+    }
     public function register()
     {
          echo view('register');
@@ -83,50 +87,41 @@ class Home extends BaseController
 
         public function userregister()
         {
-          $db= \Config\Database::connect();
-        //   print_r($_POST);die;
+            $db = \Config\Database::connect();
+      
+            $data = [
+                'username' => $this->request->getPost('username'),
+                'age' => $this->request->getPost('age'),
+                'gender' => $this->request->getPost('gender'),
+                'email' => $this->request->getPost('email'),
+                'phone' => $this->request->getPost('mobile'),
+                'visit_country' => $this->request->getPost('visitcountry'),
+                'school_grade' => $this->request->getPost('school_grade'),
+                'school_name' => $this->request->getPost('schoolname'),
+                'language_known' => $this->request->getPost('selectedLanguages'),
+                'state' => $this->request->getPost('state'),
+                'city' => $this->request->getPost('city'),
+                'area' => $this->request->getPost('area'),
+                'role' => 'student',
+                'student_type' => $this->request->getPost('student_type'),
+                'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT) // Hash the password for security
+            ];
 
-        $username = $this->request->getPost('username');
-        $age = $this->request->getPost('age');
-        $gender = $this->request->getPost('gender');
-        $email = $this->request->getPost('email');
-        $mobile = $this->request->getPost('mobile');
-        $visitcountry = $this->request->getPost('visitcountry');
-        $school_grade = $this->request->getPost('school_grade');
-        $schoolname = $this->request->getPost('schoolname');
-        $selectedLanguages = $this->request->getPost('selectedLanguages');
-        $state = $this->request->getPost('state');
-        $city = $this->request->getPost('city');
-        $area = $this->request->getPost('area');
-        $password = $this->request->getPost('password');
-        $studentType = $this->request->getPost('student_type'); 
-    
-        $data = [
-            'username' => $username,
-            'age' => $age,
-            'gender' => $gender,
-            'email' => $email,
-            'phone' => $mobile,
-            'visit_country' => $visitcountry,
-            'school_grade' => $school_grade,
-            'school_name' => $schoolname,
-            'language_known' => $selectedLanguages,
-            'state' => $state,
-            'city' => $city,
-            'area' => $area,
-            'role' => 'student',
-            'student_type' => $studentType, 
-            'password' => $password
-        ];
-          $builder = $db->table('tbl_register');
-          $builder->insert($data);
+            try {
+                $db->table('tbl_register')->insert($data);
+                // Set flash data for success message
+                session()->setFlashdata('success', 'Registered Successfully.');
 
-
-          return redirect()->to(base_url('/'));
-
-          return redirect()->to(base_url('checkout'));
-
+                return redirect()->to(base_url('loginpage'));
+            } catch (\Exception $e) {
+                log_message('error', $e->getMessage());
+                return redirect()->back()->withInput()->with('error', 'Failed to register user. Please try again.');
+            }
         }
+
+        
+
+
         public function checkout()
         {
             if (!session()->has('user_id')) {
@@ -145,6 +140,7 @@ class Home extends BaseController
 
         public function internal_register()
         {
+            // print_r($_POST);die;
             $db = \Config\Database::connect();
             
             $username = $this->request->getPost('username');
@@ -183,33 +179,15 @@ class Home extends BaseController
             $builder = $db->table('tbl_register');
 
             if ($builder->insert($data)) {
-                session()->setFlashdata('success', 'Data uploaded successfully.');
+                session()->setFlashdata('success', 'Registered Successfully.');
             } else {
                 session()->setFlashdata('error', 'Data could not be uploaded successfully.');
             }
 
-            return redirect()->to(base_url('/'));
+            return redirect()->to(base_url('loginpage'));
         }
 
 
-        
-        // public function userlogin()
-        // {
-        //     $model = new Admin_Model();
-        //     $where = [
-        //         'email' => $this->request->getVar('email'),
-        //         'password' => $this->request->getVar('password')      
-        //     ];
-        //     $result = $model->checkCredentials($where);
-        //     // print_r($result);die;
-        //     if ($result != '') {
-        //         session()->set('user_id', $result['r_id']);
-        //         return redirect()->to('Admindasboard');
-        //     } else {
-        //         session()->setFlashdata('error', 'Invalid credentials');
-        //         return redirect()->to(base_url('/')); 
-        //     }
-        // }
 
         protected function isLoggedIn()
     {
@@ -259,43 +237,44 @@ class Home extends BaseController
     }
 
 
-        public function submitEnquiry()
-        {
-            $db = \Config\Database::connect();
-               // print_r($_POST);die;
-           
-                $studentName = $this->request->getPost('studentName');
-                $parentsName = $this->request->getPost('parentsName');
-                $contactNo = $this->request->getPost('contactNo');
-                $email = $this->request->getPost('email');
-                $medium = $this->request->getPost('medium');
-                $class = $this->request->getPost('class');
-                $languages = $this->request->getPost('languages');
-                $schoolName = $this->request->getPost('schoolName');
-                $age = $this->request->getPost('age');
-                $areaOfResidence = $this->request->getPost('areaOfResidence');
-                
-                $data = [
-                    'student_name' => $studentName,
-                    'parents_name' => $parentsName,
-                    'contact_no' => $contactNo,
-                    'email' => $email,
-                    'medium' => $medium,
-                    'class' => $class,
-                    'languages' => $languages,
-                    'school_name' => $schoolName,
-                    'age' => $age,
-                    'area_of_residence' => $areaOfResidence
-                ];
+    public function submitEnquiry()
+    {
+        $db = \Config\Database::connect();
             // print_r($_POST);die;
-                $builder = $db->table('tbl_enquiry');
-                $builder->insert($data);
-    
-                return redirect()->to('home');
-            }
+        
+            $studentName = $this->request->getPost('studentName');
+            $parentsName = $this->request->getPost('parentsName');
+            $contactNo = $this->request->getPost('contactNo');
+            $email = $this->request->getPost('email');
+            $medium = $this->request->getPost('medium');
+            $class = $this->request->getPost('class');
+            $languages = $this->request->getPost('languages');
+            $schoolName = $this->request->getPost('schoolName');
+            $age = $this->request->getPost('age');
+            $areaOfResidence = $this->request->getPost('areaOfResidence');
+            
+            $data = [
+                'student_name' => $studentName,
+                'parents_name' => $parentsName,
+                'contact_no' => $contactNo,
+                'email' => $email,
+                'medium' => $medium,
+                'class' => $class,
+                'languages' => $languages,
+                'school_name' => $schoolName,
+                'age' => $age,
+                'area_of_residence' => $areaOfResidence
+            ];
+        // print_r($_POST);die;
+            $builder = $db->table('tbl_enquiry');
+            $builder->insert($data);
 
-            public function School_register()
-            {
-                echo view('School_register');
-            }
+            return redirect()->to('home');
     }
+
+    public function School_register()
+    {
+        echo view('School_register');
+    }
+    
+}
